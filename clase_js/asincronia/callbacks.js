@@ -33,3 +33,20 @@ const tarea4 = (callback)=>{
 };
 
 tarea4 (() => console.log("Tarea 1 terminada en 3 segundos"));
+
+const tarea5 = (name,time,callback)=>{
+    console.log(`Iniciando ${name}...`);
+        setTimeout(()=>{
+            callback();
+        },time);
+};
+
+tarea5('tarea1',3000,()=>{
+    console.log('tarea 1 completada');
+    tarea5('tarea2',2000,()=>{
+        console.log('tarea 2 completada');
+        tarea5('tarea3',5000,()=>{
+            console.log('tarea 3 completada');
+        });
+    });
+});
