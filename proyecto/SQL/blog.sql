@@ -27,3 +27,20 @@ CREATE TABLE entradas(
     CONSTRAINT fk_entrada_usuario FOREIGN KEY(usuario_id) REFERENCES usuarios(id),
     CONSTRAINT fk_entrada_categoria FOREIGN KEY(categoria_id) REFERENCES categorias(id)
 );
+
+--EJERCICIOS DE SUBCONSULTAS
+
+--ejercicio9
+select nombre from usuarios where id IN (select usuario_id from entradas where titulo LIKE '%GTA%');
+
+--ejercicio10
+SELECT * from entradas WHERE categoria_id = (select id from categorias where nombre = 'Acción');
+
+--ejercicio11
+SELECT nombre FROM categorias WHERE (SELECT count(*) from entradas WHERE entradas.categoria_id = categorias.id) >=3;
+
+--ejercicio13
+SELECT nombre FROM usuarios where id = (select usuario_id from entradas where DAYOFWEEK(fecha) = 3);
+
+--ejerecicio14
+select
