@@ -1,20 +1,22 @@
-function existe(array,objeto){
+function buscar(array,objeto){
     return new Promise((resolve,reject)=>{
-      array.includes(objeto);
+      const existe = array.find(i=>typeof i =='object' && i.nombre === objeto.nombre||i == objeto);
         setTimeout(()=>{
-        if(array){
+        if(existe){
             resolve('existe en el array');
         }else{
             reject('no existe en el array');
         }
-      },2000);  
+      },1000);  
     });
 }
 
 async function prueba(array,objeto) {
     try{
-        const bien = await existe(array,objeto);
-        console.log(bien);
+        const bien = await buscar(array,objeto);
+        bien(mensaje=>{
+            console.log(mensaje);
+        })
     }catch(error){
         console.log(error);
     }
