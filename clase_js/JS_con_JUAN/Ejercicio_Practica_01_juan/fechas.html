@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        let fecha = new Date(Date.now());
+        let fecha2 = new Date("2026-4-30");
+        let fecha3 = new Date(2025,2,14);
+        console.log(fecha);
+
+        console.log();
+
+        let timeHoy = fecha.getTime();
+        console.log(timeHoy);
+        //para encontrar la hora de mañana
+        timeHoy += (1000 * 60 * 60 * 24);
+        let mañana = new Date(timeHoy);
+
+        //PARA COLOCAR EN FORMATO EUROPEO, ya que por defecto te viene en el de EE.UU;
+        console.log(fecha.getDate() + ':' + fecha.getMonth() + ":" + fecha.getFullYear())
+
+    </script>
+</body>
+</html>
