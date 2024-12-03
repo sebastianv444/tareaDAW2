@@ -1,16 +1,76 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Diferencia entre Fechas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
-    <h3>Ingrese sus Fechas:</h3>
-    <input type="date" name="" id="fecha1"><br><br>
-    <input type="date" name="" id="fecha2"><br><br>
-    <button type="button" id="boton">BOTON</button>
+    <h1>Calculadora de Diferencia entre Fechas</h1>
+    <form id="dateForm">
+        <label for="date1">Primera fecha (aaaa/mm/dd):</label>
+        <input type="text" id="date1" placeholder="2024/11/01" required>
+        <br><br>
+        <label for="date2">Segunda fecha (aaaa/mm/dd):</label>
+        <input type="text" id="date2" placeholder="2024/11/29" required>
+        <br><br>
+        <button type="button" onclick="calculateDifference()">Calcular</button>
+    </form>
+    <div id="result"></div>
 
-    <script src="ej5.js"></script>
+    <script>
+        // Función para convertir una cadena en formato "aaaa/mm/dd" a un objeto Date
+        function parseDate(input) {
+            const parts = input.split('/');
+            const year = parseInt(parts[0], 10);
+            const month = parseInt(parts[1], 10) - 1; // Los meses en JavaScript comienzan desde 0
+            const day = parseInt(parts[2], 10);
+            return new Date(year, month, day);
+        }
+
+        // Función para calcular la diferencia entre dos fechas
+        function calculateDifference() {
+            const date1Str = document.getElementById('date1').value;
+            const date2Str = document.getElementById('date2').value;
+
+            try {
+                const date1 = parseDate(date1Str);
+                const date2 = parseDate(date2Str);
+
+                // Validación de fechas
+                if (isNaN(date1.getTime()) || isNaN(date2.getTime())) {
+                    throw new Error('Formato de fecha inválido. Use "aaaa/mm/dd".');
+                }
+
+                // Calcular la diferencia en milisegundos
+                const differenceMs = Math.abs(date2 - date1);
+
+                // Convertir a días, horas, minutos y segundos
+                const totalDays = differenceMs / (1000 * 60 * 60 * 24);
+                const hours = Math.floor((totalDays % 1) * 24);
+                const minutes = Math.floor(((totalDays % 1) * 24 % 1) * 60);
+                const seconds = Math.floor((((totalDays % 1) * 24 % 1) * 60 % 1) * 60);
+
+                // Mostrar el resultado
+                const resultDiv = document.getElementById('result');
+                resultDiv.innerHTML = `
+                    <p><strong>Diferencia:</strong> ${Math.floor(totalDays)} días, ${hours} horas, ${minutes} minutos, ${seconds} segundos.</p>
+                `;
+            } catch (error) {
+                // Manejar errores de entrada
+                document.getElementById('result').innerHTML = `<p style="color:red;">Error: ${error.message}</p>`;
+            }
+        }
+    </script>
 </body>
 </html>
