@@ -16,61 +16,91 @@
     </style>
 </head>
 <body>
-    <h1>Calculadora de Diferencia entre Fechas</h1>
-    <form id="dateForm">
-        <label for="date1">Primera fecha (aaaa/mm/dd):</label>
-        <input type="text" id="date1" placeholder="2024/11/01" required>
-        <br><br>
-        <label for="date2">Segunda fecha (aaaa/mm/dd):</label>
-        <input type="text" id="date2" placeholder="2024/11/29" required>
-        <br><br>
-        <button type="button" onclick="calculateDifference()">Calcular</button>
-    </form>
-    <div id="result"></div>
-
     <script>
-        // Función para convertir una cadena en formato "aaaa/mm/dd" a un objeto Date
-        function parseDate(input) {
-            const parts = input.split('/');
-            const year = parseInt(parts[0], 10);
-            const month = parseInt(parts[1], 10) - 1; // Los meses en JavaScript comienzan desde 0
-            const day = parseInt(parts[2], 10);
-            return new Date(year, month, day);
-        }
 
-        // Función para calcular la diferencia entre dos fechas
-        function calculateDifference() {
-            const date1Str = document.getElementById('date1').value;
-            const date2Str = document.getElementById('date2').value;
+        function ejecutar(){
 
-            try {
-                const date1 = parseDate(date1Str);
-                const date2 = parseDate(date2Str);
+            let formatoCorrecto = true;
+            let anno,dd,mm;
+            
+            do{
+                let fecha = prompt("introduce la fecha aaaa/dd/mm");
+                let array = fecha.split("/");
+                let anno = parseInt(array[0]);
+                let dd = parseInt(array[1]);
+                let mm = parseInt(array[2]);
 
-                // Validación de fechas
-                if (isNaN(date1.getTime()) || isNaN(date2.getTime())) {
-                    throw new Error('Formato de fecha inválido. Use "aaaa/mm/dd".');
+                if(dd < 1 || dd > 31){
+                    formatoCorrecto = false;
+                }
+                if(mm < 1 || mm > 12){
+                    formatoCorrecto = false;
                 }
 
-                // Calcular la diferencia en milisegundos
-                const differenceMs = Math.abs(date2 - date1);
+            }while(!formatoCorrecto);
+            
+            //le sumo 1, ya que enero para Date es el mes 0 y, igual con los dias
+            let fecha = new Date(anno,mm+1,dd+1);
+        
+            do{
+                let fecha = prompt("introduce la segunda fecha aaaa/dd/mm");
+                let array = fecha.split("/");
+                let anno = parseInt(array[0]);
+                let dd = parseInt(array[1]);
+                let mm = parseInt(array[2]);
 
-                // Convertir a días, horas, minutos y segundos
-                const totalDays = differenceMs / (1000 * 60 * 60 * 24);
-                const hours = Math.floor((totalDays % 1) * 24);
-                const minutes = Math.floor(((totalDays % 1) * 24 % 1) * 60);
-                const seconds = Math.floor((((totalDays % 1) * 24 % 1) * 60 % 1) * 60);
+                if(dd < 1 || dd > 31){
+                    formatoCorrecto = false;
+                }
+                if(mm < 1 || mm > 12){
+                    formatoCorrecto = false;
+                }
 
-                // Mostrar el resultado
-                const resultDiv = document.getElementById('result');
-                resultDiv.innerHTML = `
-                    <p><strong>Diferencia:</strong> ${Math.floor(totalDays)} días, ${hours} horas, ${minutes} minutos, ${seconds} segundos.</p>
-                `;
-            } catch (error) {
-                // Manejar errores de entrada
-                document.getElementById('result').innerHTML = `<p style="color:red;">Error: ${error.message}</p>`;
-            }
+            }while(!formatoCorrecto);
+            //le sumo 1, ya que enero para Date es el mes 0 y, igual con los dias
+            let fecha2 = new Date(anno,mm+1,dd+1);
+
+            let diasEntre = diasEntreFechas(fecha,fecha2);
+
+            document.getElementById("salida").innerHTML = diasEntre;
+
         }
+
+        function ejecutar2(){
+
+            let fecha1 = document.getElementById("fecha1").value;
+            let fecha2 = document.getElementById("fecha2").value;
+
+            fecha1 = new Date(fecha1);
+            fecha2 = new Date(fecha2);
+
+            let dias = diasEntreFechas(fecha1,fecha2);
+
+            document.getElementById("salida").innerHTML = dias;
+
+        }
+
+        function diasEntreFechas(fecha1,fecha2) {
+            //para obtener los tiempos
+            let time1 = fecha1.getTime();
+            let time2 = fecha2.getTime();
+
+            //para obtener el valor absoluto, eso te dara los milisegundos.
+            let tiempoEntre = Math.abs(time2 - time1);
+        
+            //para pasar los milisegundos a segundos es entre mil,para los dias
+        let diasEntre = tiempoEntre / 1000 / 60 / 60 /24;
+        return diasEntre;
+
+        }
+
     </script>
+
+    <p>Dias entre:<span id="salida"></span></p>
+    <button onclick="ejecutar()">Ejecutas</button>
+    <input type="date" name="" id="fecha1">
+    <input type="date" name="" id="fecha2">
+    <button type="button" onclick="ejecutar2()">ejecutar</button>
+
 </body>
 </html>
