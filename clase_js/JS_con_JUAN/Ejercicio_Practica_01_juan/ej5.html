@@ -16,6 +16,7 @@
     </style>
 </head>
 <body>
+<<<<<<< HEAD
     <h1>Calculadora de Diferencia entre Fechas</h1>
     <form id="dateForm">
         <label for="date1">Primera fecha (aaaa/mm/dd):</label>
@@ -72,5 +73,93 @@
             }
         }
     </script>
+=======
+    <script>
+
+        function ejecutar(){
+
+            let formatoCorrecto = true;
+            let anno,dd,mm;
+            
+            do{
+                let fecha = prompt("introduce la fecha aaaa/dd/mm");
+                let array = fecha.split("/");
+                let anno = parseInt(array[0]);
+                let dd = parseInt(array[1]);
+                let mm = parseInt(array[2]);
+
+                if(dd < 1 || dd > 31){
+                    formatoCorrecto = false;
+                }
+                if(mm < 1 || mm > 12){
+                    formatoCorrecto = false;
+                }
+
+            }while(!formatoCorrecto);
+            
+            //le sumo 1, ya que enero para Date es el mes 0 y, igual con los dias
+            let fecha = new Date(anno,mm+1,dd+1);
+        
+            do{
+                let fecha = prompt("introduce la segunda fecha aaaa/dd/mm");
+                let array = fecha.split("/");
+                let anno = parseInt(array[0]);
+                let dd = parseInt(array[1]);
+                let mm = parseInt(array[2]);
+
+                if(dd < 1 || dd > 31){
+                    formatoCorrecto = false;
+                }
+                if(mm < 1 || mm > 12){
+                    formatoCorrecto = false;
+                }
+
+            }while(!formatoCorrecto);
+            //le sumo 1, ya que enero para Date es el mes 0 y, igual con los dias
+            let fecha2 = new Date(anno,mm+1,dd+1);
+
+            let diasEntre = diasEntreFechas(fecha,fecha2);
+
+            document.getElementById("salida").innerHTML = diasEntre;
+
+        }
+
+        function ejecutar2(){
+
+            let fecha1 = document.getElementById("fecha1").value;
+            let fecha2 = document.getElementById("fecha2").value;
+
+            fecha1 = new Date(fecha1);
+            fecha2 = new Date(fecha2);
+
+            let dias = diasEntreFechas(fecha1,fecha2);
+
+            document.getElementById("salida").innerHTML = dias;
+
+        }
+
+        function diasEntreFechas(fecha1,fecha2) {
+            //para obtener los tiempos
+            let time1 = fecha1.getTime();
+            let time2 = fecha2.getTime();
+
+            //para obtener el valor absoluto, eso te dara los milisegundos.
+            let tiempoEntre = Math.abs(time2 - time1);
+        
+            //para pasar los milisegundos a segundos es entre mil,para los dias
+        let diasEntre = tiempoEntre / 1000 / 60 / 60 /24;
+        return diasEntre;
+
+        }
+
+    </script>
+
+    <p>Dias entre:<span id="salida"></span></p>
+    <button onclick="ejecutar()">Ejecutas</button>
+    <input type="date" name="" id="fecha1">
+    <input type="date" name="" id="fecha2">
+    <button type="button" onclick="ejecutar2()">ejecutar</button>
+
+>>>>>>> 97000e9 (ActualizaciónLogos)
 </body>
 </html>
