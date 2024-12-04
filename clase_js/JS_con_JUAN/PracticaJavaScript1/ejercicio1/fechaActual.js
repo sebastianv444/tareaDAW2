@@ -3,7 +3,7 @@ const boton = document.querySelector('#boton');
 boton.addEventListener("click",()=>{
 
     let fecha = new Date(Date.now());
-    let fechaActual =`${fecha.getDate()}/${fecha.getMonth()}/${fecha.getFullYear()}`;
+    let fechaActual =`${fecha.getDate()}/${fecha.getMonth()+1}/${fecha.getFullYear()}`;
 
     /* padStart rellena el inicio de una cadena con caracteres especificados hasta alcanzar 
     una longitud especificada a la izquierda. */
