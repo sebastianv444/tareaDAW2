@@ -11,18 +11,53 @@ document.querySelector("button").addEventListener("click",()=>{
     }
 
     input = input.split("");
-    console.log(input)
     
-    let numeroDNI = input.map((a)=>{
+    let numerosDNI = input.map((a)=>{
         if(!isNaN(a)){
             return a;
         }
     });
 
-    let operacion = (parseInt(numeroDNI.join(''))) % 23;
+    let operacion = (parseInt(numerosDNI.join(''))) % 23;
     let comprobacion = '';
     try {
         switch(operacion){
+            case 0:
+                comprobacion = 'T';
+                break;
+            case 1:
+                comprobacion = 'R';
+                break;
+            case 2:
+                comprobacion = 'W';
+                break;
+            case 3:
+                comprobacion = 'A';
+                break;
+            case 4:
+                comprobacion = 'G';
+                break;
+            case 5:
+                comprobacion = 'M';
+                break;
+            case 6:
+                comprobacion = 'Y';
+                break;
+            case 7:
+                comprobacion = 'F';
+                break;
+            case 8:
+                comprobacion = 'P';
+                break;
+            case 9:
+                comprobacion = 'D';
+                break;
+            case 10:
+                comprobacion = 'X';
+                break;
+            case 11:
+                comprobacion = 'B';
+                break;
             case 12:
                 comprobacion = 'N';
                 break;
@@ -54,13 +89,22 @@ document.querySelector("button").addEventListener("click",()=>{
                 comprobacion = 'Q';
                 break;
             default:
-                throw new Error;
+                throw new Error('SU DNI NO EXISTE');
                 break;
         }
     } catch (error) {
-        p.textContent = 'SU DNI NO EXISTE'
+        p.textContent = error;
         p.style.color = 'red'
         return;
     }
-
+    let letraDNI = input.filter((i)=>isNaN(i));
+    letraDNI = letraDNI.join('')
+    if(letraDNI === comprobacion){
+        p.textContent = 'SU DNI ES CORRECTO';
+        p.style.color = 'green'
+    }else{
+        p.textContent = 'LA LETRA DE SU DNI NO COINCIDE';
+        p.style.color = 'red'
+    }
+    
 });
