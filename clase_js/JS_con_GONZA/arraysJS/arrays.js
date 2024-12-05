@@ -65,7 +65,7 @@ resultado = [producto2,...carrito];
 meses.pop();
 /* console.log(meses); */
 
-//metodo shift() elmina el primero valor del array;
+//metodo shift() elimina el primero valor del array;
 meses.shift();
 
 //eliminar elemento en una posicion especifica con un metodo splice.
