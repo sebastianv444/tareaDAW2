@@ -16,7 +16,7 @@ async function prueba(array,objeto) {
         const bien = await buscar(array,objeto);
         bien(mensaje=>{
             console.log(mensaje);
-        })
+        });
     }catch(error){
         console.log(error);
     }
