@@ -154,7 +154,8 @@ input[type='password']{
 }
 
 input[type='button'],
-input[type='submit']{
+input[type='submit'],
+.boton{
     margin-top: 5px;
     margin-bottom: 5px;
     display: block;
@@ -164,6 +165,10 @@ input[type='submit']{
     border: 1px solid #156785;
     cursor: pointer;
     padding: 7px;
+}
+.boton-rojo{
+    background: red;
+    border-color: #930303;
 }
 
 /* PRINCIPAL */
