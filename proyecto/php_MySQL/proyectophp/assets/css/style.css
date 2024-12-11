@@ -166,6 +166,7 @@ input[type='submit'],
     cursor: pointer;
     padding: 7px;
 }
+
 .boton-rojo{
     background: red;
     border-color: #930303;

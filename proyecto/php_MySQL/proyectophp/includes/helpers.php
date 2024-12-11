@@ -25,3 +25,31 @@ function borrarErrores(){
     }
 
 }
+
+function conseguirCategorias($conexion){
+    $sql = "SELECT * FROM categorias ORDER BY id asc";
+    /* el primer parametro es a la base da datos que queremos consultar, y el sgundo parametro
+    es la consulta */
+    $categorias = mysqli_query($conexion,$sql);
+
+    $resultado = [];
+    if($categorias && mysqli_num_rows($categorias) >= 1){
+        $resultado = $categorias;
+    }
+
+    return $resultado;
+}
+
+function conseguirUltimasEntradas($conexion){
+    $sql = "SELECT e.*,c.nombre AS 'ca FROM entrada AS e
+    INNER JOIN entradas AS e ON e.categorias_id = c.id ORDER BY e.id DESC LIMIT 4;";
+
+    $entradas = mysqli_query($conexion,$sql);
+
+    $resultado = [];
+    if($entradas && mysqli_num_rows($entradas) >= 1){
+        $resultado = $entradas;
+    }
+
+    return $resultado;
+}

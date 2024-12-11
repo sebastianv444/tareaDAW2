@@ -10,7 +10,7 @@ sin la palabra reservada async*/
     Existen:
     - Sincrono
     - asíncrono secuencial
-    - asíc¡ncrono en paralelo
+    - asíncrono en paralelo
 */
 
 

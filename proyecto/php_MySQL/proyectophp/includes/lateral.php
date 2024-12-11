@@ -3,25 +3,26 @@
 
 <aside id="sidebar">
 
-<?php if(isset($_SESSION['usuario'])):?>
-    <h3>Bienvenido/a, <?= $_SESSION['usuario']['nombre'].' '.$_SESSION['usuario']['apellidos']?></h3>
-<?php endif;?>
-
-<?php if(isset($_SESSION['error_login'])):?>
-
-<div class="alerta alerta-error">
-    <?= $_SESSION['error_login']; ?>
-</div>
-
-<?php endif;?>
-
+<?php if(isset($_SESSION['usuario'])) : ?>
+<h3>Bienvenido/a, <?=$_SESSION['usuario']['nombre'].' '.$_SESSION['usuario']['apellidos'] ?> </h3>
 <!-- BOTONES -->
 
-<a href="">CERRAR SESION</a>
+<a href="cerrar.php" class="boton boton-rojo">Cerrar sesión</a>
+<?php endif; ?>
 
+<?php if(!isset($_SESSION['usuario'])):?><!-- comprobar si el usuario está logado, si lo esta, quitamos el iniiciar sesion -->
     <div id="login" class="bloque">
         <h3>Identíficate</h3>
+
+        <?php if(isset($_SESSION['error_login'])) : ?>
+
+            <div class="alerta alerta-error">
+                <?= $_SESSION['error_login']; ?>
+            </div>
+
+        <?php endif; ?>
         
+
         <form action="login.php" method="POST">
             <label for="email">email</label>
             <input type="email" name="email" id="email">
@@ -59,7 +60,8 @@
 
             <input type="submit" value="Registrarse">
         </form>
-
         <?php borrarErrores(); ?>
     </div>
+
+    <?php endif;?><!-- Fin bloque comprobar si el usuario esta registrado para que  -->
 </aside>
