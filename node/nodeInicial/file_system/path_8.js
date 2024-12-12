@@ -17,3 +17,10 @@ console.log(base);
 
 const baseSin = path.basename('tmp/archivos/documentos/imagen.jpg','.jpg');
 console.log(baseSin);
+
+// obtener la extensión
+/* extname solo obtiene la ultima extension, por mas que tenga muchas obtendra solo 
+la ultima, en este caso .jpg */
+const extension = path.extname('miImagen.png.jpg');
+console.log(extension);
+
