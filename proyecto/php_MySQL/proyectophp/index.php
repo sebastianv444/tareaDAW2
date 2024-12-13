@@ -6,35 +6,26 @@
 <main id="principal">
     <h1>Últimas entradas</h1>
 
-    <!-- estos articulos deberían estar en un section, en esta ocasion se olvido, 
+    <?php
+    $entradas = conseguirUltimasEntradas($db);
+    if (!empty($entradas)):
+        while ($entrada = mysqli_fetch_assoc($entradas)): ?>
+
+            <!-- estos articulos deberían estar en un section, en esta ocasion se olvido, 
          no tocar el codigo pls -->
-    <article>
-        <a>
-            <h2>Título de la entrada</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, et.</p>
-        </a>
-    </article>
+            <article class="entrada">
+                <a href="#">
+                    <h2><?= $entrada['titulo']; ?></h2>
+                    <span class="fecha"><?= $entrada['categoria'] . ' | ' . $entrada['fecha'] ?></span>
+                    <p>
+                        <!-- esto te coje los 100 primeros caracteres de descripcion de base de datos -->
+                        <?= substr($entrada['descripcion'],0,100).'...';?>
+                    </p>
+                </a>
+            </article>
 
-    <article>
-        <a>
-            <h2>Título de la entrada</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, et.</p>
-        </a>
-    </article>
-
-    <article>
-        <a>
-            <h2>Título de la entrada</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, et.</p>
-        </a>
-    </article>
-
-    <article>
-        <a>
-            <h2>Título de la entrada</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, et.</p>
-        </a>
-    </article>
+    <?php endwhile;
+    endif; ?>
 
     <div id="ver-todas"><a href="">todas las entradas</a></div>
 </main>

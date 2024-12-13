@@ -4,13 +4,19 @@
 <aside id="sidebar">
 
 <?php if(isset($_SESSION['usuario'])) : ?>
-<h3>Bienvenido/a, <?=$_SESSION['usuario']['nombre'].' '.$_SESSION['usuario']['apellidos'] ?> </h3>
-<!-- BOTONES -->
 
+<h3>Bienvenido/a, <?=$_SESSION['usuario']['nombre'].' '.$_SESSION['usuario']['apellidos'] ?> </h3>
+
+<!-- BOTONES -->
+<a href="crear-entradas.php" class="boton boton-verde">Crear entradas</a>
+<a href="crear-categorias.php" class="boton">Crear categoría</a>
+<a href="cerrar.php" class="boton boton-naranja">Mis datos</a>
 <a href="cerrar.php" class="boton boton-rojo">Cerrar sesión</a>
+
 <?php endif; ?>
 
-<?php if(!isset($_SESSION['usuario'])):?><!-- comprobar si el usuario está logado, si lo esta, quitamos el iniiciar sesion -->
+
+<?php if(!isset($_SESSION['usuario'])) : ?> <!-- comprobar si el usuario está logado, si lo está, quitamos los bloques -->
     <div id="login" class="bloque">
         <h3>Identíficate</h3>
 
@@ -63,5 +69,5 @@
         <?php borrarErrores(); ?>
     </div>
 
-    <?php endif;?><!-- Fin bloque comprobar si el usuario esta registrado para que  -->
+   <?php endif; ?> <!-- Fin bloque comprobar si el usuario está registrado para quitar los bloques -->
 </aside>

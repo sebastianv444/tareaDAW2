@@ -38,6 +38,12 @@ body{
     background-color: red;
 }
 
+.fecha{
+    color: #4e4e4e;
+    margin-top: 5px;
+    font-size: 14px;
+}
+
 /* CABECERA */
 
 #cabecera{
@@ -167,9 +173,24 @@ input[type='submit'],
     padding: 7px;
 }
 
+.boton{
+    text-align: center;
+    width: 130px;
+}
+
 .boton-rojo{
     background: red;
     border-color: #930303;
+}
+
+.boton-naranja{
+    background: orange;
+    border-color: #bd7d08;
+}
+
+.boton-verde{
+    background: #21b921;
+    border-color: green;
 }
 
 /* PRINCIPAL */

@@ -40,16 +40,19 @@ function conseguirCategorias($conexion){
     return $resultado;
 }
 
-function conseguirUltimasEntradas($conexion){
-    $sql = "SELECT e.*,c.nombre AS 'ca FROM entrada AS e
-    INNER JOIN entradas AS e ON e.categorias_id = c.id ORDER BY e.id DESC LIMIT 4;";
+function conseguirUltimasEntradas($conexion) {
 
-    $entradas = mysqli_query($conexion,$sql);
+    $sql = "SELECT e.*, c.nombre AS 'categoria' FROM entradas AS e INNER JOIN categorias AS c ON e.categoria_id = c.id ORDER BY e.id DESC LIMIT 4";
 
-    $resultado = [];
-    if($entradas && mysqli_num_rows($entradas) >= 1){
-        $resultado = $entradas;
+    $entradas = mysqli_query($conexion, $sql); 
+
+    $resultado = array();
+
+    if($entradas && mysqli_num_rows($entradas) >= 1) {
+        $resultado = $entradas;        
     }
 
     return $resultado;
+
+
 }
