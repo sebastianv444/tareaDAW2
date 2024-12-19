@@ -16,7 +16,7 @@
 
         <label for="descripcion">descripcion:</label>
         <textarea name="descripcion" id=""></textarea>
-
+        <?php echo isset($_SESSION['errores_entrada']) ? mostrarError($_SESSION['errores_entrada'],"titulo"):'';?>
         <label for="categoria">Categoría</label>
         <select name="categoria" id="">
         <?php 
@@ -37,6 +37,7 @@
 
         <input type="submit" value="CREAR">
     </form>
+    <?= borrarErrores();?>
 </main>
 
 <?php require_once 'includes/pie.php';?>
