@@ -5,6 +5,10 @@ const fs = require('node:fs');
 que accedemos con el process */
 const puertoDeseado = process.env.PORT ?? 1234;
 
+/* 
+    IMPORTANTE!!: siempre hay que devolver un statusCode desde la api.
+*/
+
 const procesarResultado = http.createServer((req,res)=>{
     if(req.url == '/'){
         //el statusCode 200 significa que le estoy enviando un okey como respuesta;
@@ -39,3 +43,29 @@ procesarResultado.listen(puertoDeseado,()=>{
             puertoDeseado
     }`)
 });
+
+/* 
+    STATUS CODE:
+    http.cat
+
+    100-199: Respuesta informativa.
+    200-299: respuesta satisfactoria.
+    300-399: redirecciones.
+    400-499: errores del cliente.
+    500-599: errores del servidor.
+
+    errores más tipicos
+
+    200: OK
+    201: RECURSO CREADO O GRABADO OK!!
+    301: movido permanentemente y le redirigimos
+    400: bad request(esto es cuando le estas enviando mal los datos en el json o otro a la API)
+    401: no autorizado (unauthorized)
+    403: prohibido (forbidden)
+    404: pagina no encontrada (not found)
+    500: internal server error
+    503: servicio no disponible(service unavailable)
+
+    ENTREVISTA DATO:
+    HABLAR DEL ESTATUSCODE 103(ES UNO NUEVO);
+*/
