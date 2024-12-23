@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EJERCICIO 3</title>
+    <style>
+        body{
+            margin: 0;
+            width: 100vw;
+            height: 100vh;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-flow: column;
+        }
+        button{
+            border-radius: 20px;
+            border: 1px solid black;
+            padding: 8px;
+            cursor: pointer;
+            transition: 0.6s;
+        }
+        button:hover{
+            transition: 0.6s;
+            background-color: gainsboro;
+        }
+    </style>
+</head>
+<body>
+
+    <h1><span id="hora">00</span>:<span id="minuto">00</span>:<span id="segundo">00</span></h1>
+    <div>
+        <button type="button" id="iniciar">INICIAR</button>
+        <button type="button" id="pausar">PAUSAR</button>
+        <button type="button" id="reiniciar">REINICIAR</button>
+    </div>
+    <script src="proceso.js"></script>
+</body>
+</html>
