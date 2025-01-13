@@ -1,4 +1,4 @@
-function proceso() {
+function obtenerFechaSumada() {
   let dia, mes, año;
   do {
     alert("Ha continuacion ingrese su fecha de nacimiento");
@@ -10,9 +10,9 @@ function proceso() {
       dia = NaN, mes = NaN, año = NaN;
       alert("INGRESE BIEN SU FECHA!!")
     }else{
-      parseInt(dia);
-      parseInt(mes);
-      parseInt(año);
+      dia = parseInt(dia);
+      mes = parseInt(mes);
+      año = parseInt(año);
     }
 
   } while (
@@ -22,8 +22,20 @@ function proceso() {
     año < 0
   );
 
-  alert(`Fecha ingresada: ${dia}/${mes}/${año}`);
+  let fechaSumada = dia + mes + año;
+  fechaSumada = String(fechaSumada);
+  fechaSumada = fechaSumada.split("");
+  fechaSumada = fechaSumada.map(a => parseInt(a));
+  
+  let total;
+
+  do {
+    total = fechaSumada.reduce((a,b)=>a+b,0);
+    fechaSumada = String(total).split("");
+  } while (String(total).length === 1);
+  
+  console.log(total);
   
 }
 
-proceso();
+obtenerFechaSumada();
