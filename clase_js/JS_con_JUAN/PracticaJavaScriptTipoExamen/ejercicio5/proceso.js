@@ -7,12 +7,18 @@ function leerFraccion(){
         denominador = parseFloat(prompt("Ingrese el denominador: "));
     } while (isNaN(numerador) || numerador < 0 ||isNaN(denominador) || denominador < 0);
 
+    let mostrar = [numerador,denominador];
+
+    return mostrar;
+
 }
 
 function escribirFraccion(){
+    if(denominador === 1){
+        console.log()
+    }else{
 
-    
-
+    }
 }
 
 escribirFraccion();
