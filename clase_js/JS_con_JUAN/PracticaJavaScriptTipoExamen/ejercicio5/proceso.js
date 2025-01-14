@@ -10,7 +10,7 @@ function leerFraccion(){
     let mostrar = [numerador,denominador];
 
     return mostrar;
-
+    
 }
 
 function escribirFraccion(){
