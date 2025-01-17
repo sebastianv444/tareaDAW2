@@ -1,0 +1,16 @@
+{
+    "productos": [
+        {
+            "id": 1,
+            "nombre": "portátil Axus",
+            "precio": 600,
+            "descripcion": "portátil potente para jugar"
+        },
+        {
+            "id": 2,
+            "nombre": "mesa de ping pong",
+            "precio": 100,
+            "descripcion": "mesa versátil para practicar"
+        }
+    ]
+}

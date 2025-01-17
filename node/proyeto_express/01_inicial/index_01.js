@@ -5,35 +5,15 @@ const express = require('express');
 //esto hace lo de create http.createServer pero en express
 const app = express();
 
+//si alguien hace una peticion get, y escribe /productos se le manda el res.send()
 app.get('/productos', (req,res)=>{
+    /* Por lo general en este tipo de peticiones se hace:
+        - consultar a la base de datos.
+        - procesar datos.
+        - etc...
+    */
     res.send('lista de productos');
 });
-
-app.get('/miarchivo', (req,res)=>{
-    // el segundo parametro es para decirle de donde tiene que coger nuestro archivo.
-    res.sendFile('mapache.jpeg',{
-        root: __dirname
-    });
-})
-
-app.get('/mipagina',(req,res)=>{
-    res.sendFile('static/index.html',{
-        root: __dirname
-    })
-})
-
-app.get('/usuario',(req,res)=>{
-    res.json({
-        //admite que no le pongamos comillas, siempre y cuando no tengan caracteres especiales.
-        nombre: "pepe",
-        apellido: "robustiano",
-        edad: 40,
-        direccion: {
-            ciudad: "Los angeles",
-            calle: "Del alamo"
-        }
-    })
-})
 
 app.post('/productos',(req,res)=>{
     res.send("creando el producto");
@@ -54,9 +34,9 @@ app.delete('/producto',(req,res)=>{
 })
 
 // si no coincide ninguna de nuestras paginas
-/* app.use((req,res)=>{
+app.use((req,res)=>{
     res.status(404).send("no se encontró la página maj@");
-}); */
+});
 
 //para que escuche en el puerto 3000
 app.listen(3000);
