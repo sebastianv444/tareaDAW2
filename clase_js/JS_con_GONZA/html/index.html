@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    
+
+</body>
+</html>
+
+<script>
+    const form = document.getElementById('miFormulario');
+    const nombre = document.getElementById('nombre');
+    const confirmacion = document.getElementById('mensajeConfirmacion');
+    const error = document.getElementById('mensajeError');
+
+    form.addEventListener('submit',(event)=>{
+        if(nombre === ''){
+            event.preventDefault();
+            error.style.display = 'block';
+            confirmacion.style.display = 'none';
+        }else{
+            confirmacion.style.display = 'block';
+            confirmacion.style.color = 'green';
+            error.style.display = 'none';
+        }
+    });
+</script>

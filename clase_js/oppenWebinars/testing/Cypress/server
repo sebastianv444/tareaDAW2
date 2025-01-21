@@ -1,0 +1,17 @@
+#!/usr/bin/env node
+
+/*  OJO!: estamos ejecutando este servidor con npm install --save-dev connect server-static
+solo para probar el testing */
+
+const connect = require("connect");
+const serverStatic = require("serve-static");
+
+connect()
+    .use(serverStatic(__dirname))
+    .listen(8080,() => console.log("Server running on 8080"))
+
+/* PARA USAR ESTE SERVIDOR MUY BASICO, TENEMOS QUE LLAMAR A ESTE ARCHIVO EN LA LINEA
+DE COMANDOS CON: node server.js */
+
+/* ¡¡IMPORTANTE!!: si estas en linux tienes que darle permiso de ejecucion
+a este archivo con: sudo chmod +x server */

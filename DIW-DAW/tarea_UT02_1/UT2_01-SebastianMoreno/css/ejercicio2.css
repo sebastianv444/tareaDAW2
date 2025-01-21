@@ -1,0 +1,63 @@
+#titulo{
+
+    color: aquamarine;
+
+}
+
+p strong{
+    color: red;
+}
+
+.destacado{
+    color: yellow;
+}
+
+h2{
+    color: blue;
+}
+
+p a{
+    color: red;
+}
+
+p a em{
+    color: blue;
+}
+
+#adicional a{
+    color: green;
+}
+
+p .especial{
+    color: purple;
+}
+
+caption{
+    color: blue;
+}
+
+.especial,strong{
+    color: orange;
+}
+
+td{
+    color: forestgreen;
+}
+
+th{
+    color: red;
+}
+
+#adicional p{
+    color: yellowgreen;
+}
+
+span[id="especial"]{
+    color: palevioletred;
+}
+
+table,th,td{
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 7px;
+}

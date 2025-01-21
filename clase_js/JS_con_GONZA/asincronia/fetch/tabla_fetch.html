@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table thead{
+            background-color: cornflowerblue;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    
+    <table>
+        <thead>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Email</th>
+        </thead>
+        <tbody id="datos"></tbody>
+    </table>
+    <script>
+        let url='https://jsonplaceholder.typicode.com/users';
+            fetch(url)
+                .then(response=>response.json())
+                .then(data => mostrarDatos(data))
+                .catch(erro=>console.log(error));
+
+            const mostrarDatos = (data) =>{
+                let body = '';
+                body = data.map(i=>`<tr>
+                            <td>${i.id}</td>
+                            <td>${i.nombre}</td>
+                            <td>${i.email}</td>
+                        </tr>`).join('');
+                    
+                const losDatos = document.getElementById('datos');
+                losDatos.innerHTML = body;
+            }
+    </script>
+</body>
+</html>

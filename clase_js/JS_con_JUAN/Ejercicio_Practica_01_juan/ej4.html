@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        function ejecutar() {
+            let texto1 = document.querySelector("#texto1").value.trim().toLowerCase();
+            let texto2 = document.querySelector("#texto2").value.trim().toUpperCase();
+            let array = [texto1,texto2];
+            let incluye = mismasLetras(array);
+            let salida = document.getElementById("salida");
+            incluye?salida.innerHTML = "Verdadero": salida.innerHTML = "falso" 
+        }
+
+        function mismasLetras(array){
+            let letrasPrimero = array[0].split("");
+            let letrasSegundo = array[1].split("");
+            let incluye = true;
+
+            letrasPrimero.forEach(element => {
+                letrasPrimero.includes(element) ? incluye = true: incluye = false;
+            });
+
+            return incluye;
+        }
+
+    </script>
+
+    <input type="text" name="" id="texto1"><br>
+    <input type="text" name="" id="texto2"><br>
+    <button type="button" onclick="ejecutar()">ejecutar</button>
+    <p>Resultado: <span id="salida"></span></p>
+</body>
+</html>

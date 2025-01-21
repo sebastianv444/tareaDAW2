@@ -1,0 +1,9 @@
+USUARIO: cr7
+CONTRASEÑA: $2y$10$D9Jb6RpsSjSqBbvrvsrUQuu9Y04f1e7dXrX.cvt5i.d/Q827JUkSe
+
+USUARIO: sebastianv444
+CONTRASEÑA: $2y$10$3DgMF2wLrlbJhAg8WhIqMekvhUBDI3arrfwqc2q7mV8Jr3aR7djs2
+
+USUARIO: dddd
+CONTRASEÑA: $2y$10$7no3rAUbplVUTRe6NxaFcuzLpGeNOUGmGls.sd77jAVE3Qjs0S9GO
+
