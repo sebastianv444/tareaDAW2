@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Crear Vehiculo</h1>
+    <form>
+        <label>Marca: </label>
+        <input type="text" id="marca">
+        <label>Año de Fabricación</label>
+        <input type="number" id="añoFabricacion">
+        <label>Tipo de Vehiculo:
+            <select id="tipoVehiculo">
+                <option value="">Seleccione...</option>
+                <option value="Coche">Coche</option>
+                <option value="Moto">Moto</option>
+                <option value="Camion">Camión</option>
+                <option value="Bicicleta">Bicicleta</option>
+                <option value="Patinete">Patinete</option>
+            </select>
+        </label>
+        <div id="camposDinamicos"></div>
+        <button type="button" id="crear">Crear Objeto</button>
+    </form>
+    <p id="resultado"></p>
+    <script src="proceso.js"></script>
+</body>
+</html>
