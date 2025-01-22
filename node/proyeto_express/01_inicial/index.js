@@ -1,63 +1,64 @@
-//Primer servidor en express
-
 const express = require('express');
 
 //esto hace lo de create http.createServer pero en express
 const app = express();
 
-app.get('/productos', (req,res)=>{
-    res.send('lista de productos');
+/* el .use nos ayuda a interpretar la respuesta que nos viene en su formato
+correspondiente */
+//middleware
+app.use(express.text());
+app.use(express.json());
+app.use(express.urlencoded({extended:false}));
+
+app.post('/usuario', (req,res)=>{
+    //TODO(se lee tudu en ingles) guardar del body la información que nos llega.
+    console.log(req.body);
+    res.send('usuario guardado');
+});
+/* Los 2 puntos en :username es para admitir que puedan escribir parametros y no solo
+rutas. */
+app.get('/hola/:username', (req,res)=>{
+    //el req.params coge los parametros.
+    console.log(req.params);
+    nombre = req.params.username.toUpperCase();
+    console.log(typeof nombre);
+    
+    res.send(`Hola qué tal ${nombre}`)
+});
+/* Los 2 puntos en :x u :y es para admitir que puedan escribir parametros y no solo
+rutas. */
+app.get('/sumar/:x/:y',(req,res)=>{
+    console.log(req.params);
+    const resultado = parseInt(req.params.x) + parseInt(req.params.y)
+    res.send(`El resultado de la suma es: ${resultado}`);
+    //obteniendolo con desestructuring.
+    const {x,y} = req.params;
 });
 
-app.get('/miarchivo', (req,res)=>{
-    // el segundo parametro es para decirle de donde tiene que coger nuestro archivo.
-    res.sendFile('mapache.jpeg',{
-        root: __dirname
-    });
-})
-
-app.get('/mipagina',(req,res)=>{
-    res.sendFile('static/index.html',{
-        root: __dirname
-    })
-})
-
-app.get('/usuario',(req,res)=>{
-    res.json({
-        //admite que no le pongamos comillas, siempre y cuando no tengan caracteres especiales.
-        nombre: "pepe",
-        apellido: "robustiano",
-        edad: 40,
-        direccion: {
-            ciudad: "Los angeles",
-            calle: "Del alamo"
-        }
-    })
-})
-
-app.post('/productos',(req,res)=>{
-    res.send("creando el producto");
+app.get('/usuario/:username/foto',(req,res)=>{
+    if(req.params.username === 'pepito'){
+        return res.sendFile('mapache.jpeg',{
+            /* con el root coge la ruta y __dirname coge tu ubicacion absoluta donde 
+            te encuentras */
+            root:__dirname
+        })
+    }else{
+        res.send(`página nomalucha`);
+    }
 });
 
-/* con el put es cuando quieros modificar cosas en general. */
-app.put('/producto',(req,res)=>{
-    res.put("actualizando una parte del producto");
-});
-
-/* con el patch solo modificamos una campo en especifico. */
-app.patch('/producto',(req,res)=>{
-    res.send("actualizando una parte del producto");
-});
-
-app.delete('/producto',(req,res)=>{
-    res.send("borrando el producto");
+app.get('/nombre/:name/apellido/:lastname',(req,res)=>{
+    console.log(req.params);
+    res.send(`el usuario ${req.params.name} tiene de apellido ${req.params.lastname}`);
 })
 
-// si no coincide ninguna de nuestras paginas
-/* app.use((req,res)=>{
-    res.status(404).send("no se encontró la página maj@");
-}); */
+app.get('/preguntas',(req,res)=>{
+    console.log(req.query);
+    console.log(req.query.primera);
+    console.log(req.query.segunda);
+    //http://localhost:3000/preguntas?primera=hola&segunda=quetal
+    res.send("imprimiendo preguntas");
+});
 
-//para que escuche en el puerto 3000
 app.listen(3000);
 console.log("escuchando en el puerto 3000");
