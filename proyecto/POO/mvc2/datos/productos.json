@@ -2,15 +2,21 @@
     "productos": [
         {
             "id": 1,
-            "nombre": "portátil Axus",
+            "nombre": "port\u00e1til Axus",
             "precio": 600,
-            "descripcion": "portátil potente para jugar"
+            "descripcion": "port\u00e1til potente para jugar"
         },
         {
             "id": 2,
             "nombre": "mesa de ping pong",
             "precio": 100,
-            "descripcion": "mesa versátil para practicar"
+            "descripcion": "mesa versatil para practicar"
+        },
+        {
+            "nombre": "lavadora",
+            "precio": "399",
+            "descripcion": "parrals",
+            "id": 3
         }
     ]
 }

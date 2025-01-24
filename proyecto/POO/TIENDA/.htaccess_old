@@ -1,0 +1,11 @@
+<ifmodule mod_rewrite.c>
+#activar rewrite
+RewriteEngine on
+
+RewriteCond %{SCRIPT_FILENAME} !-d <!-- para reescribir directorios y no confunda cosas con el ruteo -->
+RewriteCond %{SCRIPT_FILENAME} !-f <!-- para reescribir archivos -->
+
+RewriteRule ^{.*}/{.*} index.php?controller=$1&action=$2
+</ifmodule>
+<!-- quitar de la extension el _old y modificar bien este archivo para que coja las rutas
+ amigables. -->

@@ -25,7 +25,8 @@
 
         public function crear($producto){
             // obtener el último id y aumentamos en 1
-            /* Establece el puntero interno de un array a su último elemento */
+            /* Establece el puntero interno de un array a su último elemento {} 
+            del json seleccionado, pero en especifico el id */
             $ultimoId = end($this->datos['productos'])['id'];
             $producto['id'] = $ultimoId + 1;
 

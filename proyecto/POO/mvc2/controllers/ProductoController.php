@@ -1,6 +1,6 @@
 <?php
 
-    class Producto{
+    class ProductoController{
         private $modelo;
 
         public function __construct()
@@ -17,7 +17,19 @@
         }
 
         public function crear(){
+            require 'views/productos/crear.php';
             
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                $producto = [
+                    'nombre' => $_POST["nombre"],
+                    'precio' => $_POST["precio"],
+                    'descripcion' => $_POST["descripcion"]
+                ];
+                if($this->modelo->crear($producto)){
+                    header('Location: index.php?action=index');
+                    return;
+                }
+            }
         }
 
     }
