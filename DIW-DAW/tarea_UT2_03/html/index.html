@@ -12,7 +12,6 @@
         font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
           "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
       }
-
       body {
         display: flex;
         flex-flow: column wrap;
@@ -32,21 +31,27 @@
       }
 
       nav {
+        display: flex;
+        justify-content: space-between;
         width: 100%;
         height: 100%;
         background-color: brown;
-        overflow: hidden;
+        padding: 0 30px;
       }
 
-      nav div {
-        float: left;
-        height: 100%;
+      .navegacion {
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
       }
 
       .nav--div {
         background-color: black;
         height: 100%;
-        padding: 10px 23px;
+        width: 100px;
+        padding: 19px 23px;
         box-shadow: 0 0 15px 7px black, inset 0 0 30px 5px black;
       }
 
@@ -54,17 +59,85 @@
         color: white;
         transition: 0.4s ease-out;
         font-weight: 600;
-        display: block;
-        height: 100%;
-        text-align: center;
-        line-height: 90px;
       }
 
       .nav--a:hover {
         transition: 0.3s ease-in;
-        transform: scale(1.2, 1.1);
+        transform: scale(1.1, 1.1);
         color: wheat;
       }
+
+      .logo {
+        box-shadow: 0 0 15px 7px black, inset 0 0 30px 5px black;
+        height: 100%;
+        width: 90px;
+        padding: 7px 16px;
+      }
+
+      .nav--a img {
+        width: 57px;
+        height: 70px;
+      }
+
+      /* submenú estilos */
+
+      ul,
+      li {
+        list-style: none;
+        padding: 0%;
+      }
+
+      .submenu {
+        top: 35px;
+        right: 14px;
+        display: none;
+        position: relative; /* este relative me ayuda a poder mover el submenu con libertad
+        sin tener errores por que desaparesca al quitar el mouse del texto inicial */
+        background: black;
+        width: 83px;
+      }
+
+      .submenu li {
+        float: none;
+        padding-bottom: 20px;
+        color: white;
+        transition: 0.4s ease-out;
+      }
+
+      .submenu a {
+        color: white;
+      }
+
+      .submenu a:hover {
+        color: wheat;
+      }
+
+      .submenu li:hover {
+        transition: 0.3s ease-in;
+        transform: scale(1.2, 1.1);
+        box-shadow: 0 0 15px 7px black, inset 0 0 30px 5px black;
+      }
+
+      ul li:hover > .submenu {
+        display: block;
+      }
+
+      /* CONTENIDO PRINCIPAL */
+
+      section {
+
+      }
+
+      section img {
+        width: 140px;
+        height: 140px;
+      }
+
+      section p {
+        
+      }
+
+      /* FOOTER */
 
       footer {
         width: 100%;
@@ -84,29 +157,52 @@
   <body>
     <header>
       <nav>
-        <div>
-          <a href="" class="nav--a">LOGO</a>
+        <div class="logo">
+          <a href="index.html" class="nav--a"
+            ><img src="../img/pngegg.png" alt=""
+          /></a>
         </div>
-        <div class="">
-          <a href="" class="nav--a">Inicio</a>
-        </div>
-        <div class="">
-          <a href="" class="nav--a">Login</a>
-        </div>
-        <div class="nav--div">
-          <a href="" class="nav--a">Inicio</a>
-        </div>
-        <div class="">
-          <a href="" class="nav--a">Dashboard</a>
-        </div>
-        <div class="">
-          <a href="" class="nav--a">Perfil</a>
-        </div>
-        <div>
-          <a href="" class="nav--a">Salir</a>
+        <div class="navegacion">
+          <div class="">
+            <a href="" class="nav--a">Login</a>
+          </div>
+          <div class="nav--div">
+            <ul>
+              <li class="nav--a">
+                <a href="" class="nav--a">Inicio</a>
+                <ul class="submenu">
+                  <li class="submenu-item"><a href="">Itachi</a></li>
+                  <li class="submenu-item"><a href="">Madara</a></li>
+                  <li class="submenu-item"><a href="">Obito</a></li>
+                  <li class="submenu-item"><a href="">Sasuke</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="">
+            <a href="" class="nav--a">Dashboard</a>
+          </div>
+          <div class="">
+            <a href="" class="nav--a">Perfil</a>
+          </div>
+          <div>
+            <a href="" class="nav--a">Salir</a>
+          </div>
         </div>
       </nav>
     </header>
+
+    <main>
+      <section>
+        <img src="../img/tsukuyomi infinito.png" alt=""/>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur
+          non delectus placeat culpa rerum eligendi, ipsum cupiditate
+          perspiciatis sint fuga enim sed inventore porro provident minima quae!
+          Deserunt, cumque omnis.
+        </p>
+      </section>
+    </main>
 
     <footer>
       <hr />
