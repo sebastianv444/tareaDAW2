@@ -117,7 +117,7 @@ ul li:hover > .submenu {
 /* CONTENIDO PRINCIPAL */
 
 section {
-  max-width: 500px;
+  max-width: 500px; /* Este max-width ayuda a que la caja se ajuste  */
   margin: auto;
 }
 
