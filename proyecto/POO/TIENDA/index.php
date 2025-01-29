@@ -1,7 +1,13 @@
 <?php
+session_start();
+/* Este session start hace que todos los controladores que hayan usado sessiones en el mismo 
+controlador puedan usarlo sin estar haciendo un session_start() en cada controlador. */
 
 //CONTROLADOR FRONTAL
+require_once "helpers/utils.php";
 require_once "./autoload.php";
+require_once "config/db.php"; /* es mejor requerir la base de datos en el index 
+para no estar requiriendo uno a uno en cada clase de los modelos */
 require_once "config/parameters.php";
 require_once 'views/layouts/header.php';
 require_once 'views/layouts/sidebar.php';
@@ -9,7 +15,7 @@ require_once 'views/layouts/sidebar.php';
 /* Creando controladores dinamicos segun el controlador que le pases por la url. */
 if (isset($_GET['controller'])) {
     $nombre_controlador = $_GET['controller'] . 'Controller';
-    // http://localhost/proyecto/POO/mvc3/?controller=Usuario&action=mostrarTodos
+    // http://localhost/proyecto/POO/TIENDA/?controller=Usuario&action=mostrarTodos
 } elseif (!isset($_GET['controller']) && !isset($_GET['action'])) {
     $nombre_controlador = controller_default; // estamos llamando a la constante de parameters.
 } else {

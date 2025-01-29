@@ -27,12 +27,43 @@ app.post('/productos',(req,res)=>{
     res.send("producto guardado");
 });
 
-app.put('/productos',(req,res)=>{
-    res.send('actualizar');
+app.put('/productos/:id',(req,res)=>{
+    // para obtener la informacion que quiero actualizar.
+    const nuevosDatos = req.body;
+    const encontrado = productos.find((producto)=>producto.id === parseInt(req.params.id));
+    
+    if(!encontrado){
+        return res.status(404).json({
+            mensaje: "producto no encontrado"
+        });
+    }
+
+    //si alguna propiedad de nuevosDatos coincide con alguna propiedad de un objeto de productor:
+    /* si existe que algun campo que coincida el id lo va sustituir todo lo de p(producto)
+    por todo lo de nuevosDatos */
+    productos = productos.map(p => p.id === parseInt(req.params.id) ? {...p, ...nuevosDatos} : p);
+    
+    console.log(productos);
+    res.json({
+        mensaje: "producto actualizado"
+    });
 });
 
-app.delete('/productos',(req,res)=>{
-    res.send('borrando productos');
+app.delete('/productos/:id',(req,res)=>{
+    //buscamos el producto por su id para borrarlo, por eso pasamos por parametros /:id
+    //esto hace la busqueda hasta encontrar y lo almacena en una variable.
+    const encontrado = productos.find((producto)=>producto.id === parseInt(req.params.id));
+    
+    if(!encontrado){
+        return res.status(404).json({
+            mensaje: "producto"
+        });
+    }
+
+    //borramos el producto
+    productos = productos.filter(p => p.id !== parseInt(req.params.id));
+    /* RETORNAR SIEMPRE UN JSON Y UN STATUSCODE COMO RESPUESTA */
+    res.json(productos);
 });
 
 app.get('/productos/:id',(req,res)=>{
@@ -41,6 +72,8 @@ app.get('/productos/:id',(req,res)=>{
     const encontrado = productos.find((producto)=>producto.id === parseInt(req.params.id));
     res.json(encontrado);
 });
+
+
 
 app.listen(3000);
 console.log("escuchando por el puerto 3000");
