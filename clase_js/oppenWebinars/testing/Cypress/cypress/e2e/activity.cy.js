@@ -11,5 +11,13 @@ describe("main",()=>{
         cy.visit("localhost:8080"); // Visita la página
         //obtenemos el boton con el texto Generate new one y hace clicks.
         cy.get("button").contains("Generate new one").click();
+
+        cy.get("div.activity h4").should("exist");
+        cy.get("div.activity a").should("exist");
+        cy.get("div.activity p").should("exist");
+
+        /* OJO: este test esta correcto, pero la api que usamos en nuestro codigo js
+        en el que hace el test pues esta deprecada, por eso nos salta un error, pero
+        este un ejemplo de como se hace un testing basico */
     });
 })

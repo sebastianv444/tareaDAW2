@@ -1,0 +1,7 @@
+RewriteEngine On
+Options All -Indexes
+
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteCond %{SCRIPT_FILENAME} !-f
+
+RewriteRule ^([a-zA-Z0-9-]+)/([a-zA-Z0-9-]+)$ index.php?controller=$1&action=$2

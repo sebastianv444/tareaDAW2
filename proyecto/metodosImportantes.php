@@ -24,4 +24,11 @@
     echo "<h3>server".$_SERVER['SERVER_SOFTWARE']."</br>";//software del servidor
     echo "<h3>server".$_SERVER['HTTP_USER_AGENT']."</br>";//indica el navegador
     echo "<h3>server".$_SERVER['REQUEST_METHOD']."</br>"; //para verificar que metodo estoy recibiendo
-?>
+
+    /* busaca en un array y retorna la clave o el indice en caso se encuentre el valor,
+    pero si no se encuentra, devolvera un false */
+    $colores = ["rojo","azul","verde","morado"];
+    $indice = array_search("verde",$colores);
+    echo $indice; //salida 2;
+
+    
