@@ -18,26 +18,18 @@
 			</header>
 
 			<!-- MENU -->
+			 <!-- retorna un array de objetos -->
+			 <?php $categorias = Utils::mostrarCategorias();?>
 			<nav id="menu">
 				<ul>
 					<li>
 						<a href="#">Inicio</a>
 					</li>
+					<?php while($categoria = $categorias->fetch_object()):?>
 					<li>
-						<a href="#">Categoria 1</a>
+						<a href="#"><?= $categoria->nombre;?></a>
 					</li>
-					<li>
-						<a href="#">Categoria 2</a>
-					</li>
-					<li>
-						<a href="#">Categoria 3</a>
-					</li>
-					<li>
-						<a href="#">Categoria 4</a>
-					</li>
-					<li>
-						<a href="#">Categoria 5</a>
-					</li>
+					<?php endwhile;?>
 				</ul>
 			</nav>
 
