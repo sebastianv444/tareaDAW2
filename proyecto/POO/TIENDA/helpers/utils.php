@@ -11,4 +11,12 @@
             }
         }
 
+        public static function mostrarCategorias(){
+            require_once 'models/Categoria.php';
+            $categoria = new Categoria();
+            // retorna un array y se guarda en categorias:
+            $categorias = $categoria->getAll();
+            return $categorias;
+        }
+
     }
