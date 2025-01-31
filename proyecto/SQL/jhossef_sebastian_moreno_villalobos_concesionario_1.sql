@@ -1,4 +1,4 @@
---PREGUNTA 1:
+    --PREGUNTA 1:
 
 UPDATE vendedores SET comision = 0.02 WHERE sueldo > 2000;
 
