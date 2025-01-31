@@ -40,7 +40,6 @@ CONSTRAINT pk_categorias PRIMARY KEY(id),
 CONSTRAINT fk_producto_categoria FOREIGN KEY(categoria_id) REFERENCES categorias(id)
 )ENGINE=InnoDb;
 
-
 CREATE TABLE pedidos(
 id              int(255) auto_increment not null,
 usuario_id      int(255) not null,
