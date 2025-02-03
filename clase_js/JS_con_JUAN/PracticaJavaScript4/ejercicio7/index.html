@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simon Dice</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        align-items: center;
+      }
+      div{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        gap: 5px;
+      }
+      button {
+        padding: 80px;
+        border-radius: 12px;
+        cursor: pointer;
+      }
+      .btn1{
+        background-color: yellow;
+      }
+      .btn2{
+        background-color: red;
+      }
+      .btn3{
+        background-color: blue;
+      }
+      .btn4{
+        background-color: green;
+      }
+      .btnIniciar{
+        padding: 10px 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <button type="button" class="btn1" data-color="yellow"></button>
+      <button type="button" class="btn2" data-color="red"></button>
+      <button type="button" class="btn3" data-color="blue"></button>
+      <button type="button" class="btn4" data-color="green"></button>
+    </div><br>
+    <button class="btnIniciar">INICIAR</button>
+
+    <script src="proceso.js"></script>
+  </body>
+</html>

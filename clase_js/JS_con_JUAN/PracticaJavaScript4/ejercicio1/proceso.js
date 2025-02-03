@@ -5,11 +5,11 @@ function generarLetra(){
 }
 	
 function colorHEX(){
-	let coolor = "";
+	let color = "";
 	for(var i=0;i<6;i++){
-		coolor = coolor + generarLetra() ;
+		color += generarLetra() ;
 	}
-	return "#" + coolor;
+	return "#" + color;
 }
 
 document.querySelector("#fondo").addEventListener('click',()=>{
