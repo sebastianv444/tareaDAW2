@@ -1,14 +1,27 @@
-function guardar(){
-    const texto = document.querySelector("textarea").textContent.trim();
-    localStorage.setItem("texto",texto);
+const textarea = document.querySelector("textarea");
+const avisos = document.querySelector("#avisos");
+
+function guardar() {
+  localStorage.setItem("texto", textarea.textContent.trim());
 }
 
-function restaurar(){
-    const textarea = document.querySelector("textarea");
-    if(localStorage.getItem("texto") !== null){
-        textarea.value = localStorage.getItem("texto");
-    }
+function restaurar() {
+  if (localStorage.getItem("texto") !== null) {
+    textarea.value = localStorage.getItem("texto");
+  } else {
+    avisos.textContent = "No hay nada que restaurar ahora.";
+    avisos.style.color = "red";
+  }
 }
 
-document.querySelector("textarea").addEventListener("keydown",guardar);
-document.querySelector("textarea").addEventListener("keydown",restaurar);
+function eliminar() {}
+
+textarea.addEventListener("keydown", () => {
+  setTimeout(() => {
+    guardar();
+  }, 3000);
+});
+
+document.querySelector("#restaurar").addEventListener("click",restaurar);
+
+document.querySelector("#borrar").addEventListener("click",eliminar);
