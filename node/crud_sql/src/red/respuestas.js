@@ -9,7 +9,7 @@ exports.success = function(req,res, mensaje = '', status = 200){
         status: status,
         body: mensaje
     });
-};
+};  
 
 exports.error = function(req,res, mensaje = 'Error interno', status = 500){
     // para estandarizar todas las respuestas y que tengan el mismo formato

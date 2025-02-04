@@ -1,0 +1,21 @@
+#PRIMERO ENTRAR EN LA SIGUIENTE RUTA, YA QUE AHÍ ES DONDE ESTA EL PHP, PORQUE A NIVEL LOCAL NO LO 
+TENEMOS EN TODO EL SISTEMA SOLO EN ESA CARPETA:#
+cd opt/lampp/bin
+
+INTALACION DE COMPOSER(GESTOR DE DEPENDECIAS EN PHP) EN UBUNTU:
+sudo ./php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+sudo ./php -r "if (hash_file('sha384', 'composer-setup.php') === 'dac665fdc30fdd8ec78b38b9800061b4150413ff2e3b6f88543c636f7cd84f6db9189d43a81e5503cda447da73c7e5b6') { echo 'Installer verified'.PHP_EOL; } else { echo 'Installer corrupt'.PHP_EOL; unlink('composer-setup.php'); exit(1); }"
+sudo ./php composer-setup.php
+sudo ./php -r "unlink('composer-setup.php');"
+
+sudo mv composer.phar ./composer
+
+VERIFICAR QUE ESTA INSTALADO:
+./php composer -v
+
+#INTALACION DE LARAVEL VIA COMPOSER(VERSION 8.0):
+-- cree una carpeta en la siguiente ruta para ejecutar ahi nuestras versiones de laravel: /opt/lampp/htdocs/proyecto/LARAVEL
+sudo /opt/lampp/bin/php /opt/lampp/bin/composer create-project laravel/laravel:^8.0 example-app
+
+cd example-app
+php artisan serve
