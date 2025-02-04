@@ -1,0 +1,32 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.contenedor {
+    width: 100%;
+}
+
+.columna {
+    width: 30%;
+    float: left;
+    margin-right: 5%;
+    background-color: lightblue;
+    padding: 20px;
+    text-align: center;
+}
+
+.columna:nth-child(3) {
+    margin-right: 0; /* Eliminar margen de la última columna para que no se empuje mal.*/
+}
+
+.bloque {
+    width: 100%;
+    background-color: lightcoral;
+    padding: 20px;
+    text-align: center;
+    clear: both; 
+    /* EL "clear: both" sirve para que las proximas cajas o cosas sigan su rumbo normal
+    sin que se vean afectadas por el float left.  */
+}

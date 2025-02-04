@@ -1,0 +1,35 @@
+.tarjeta {
+    display: flex;
+    width: 400px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px black;
+    background: white;
+    font-family: Arial, sans-serif;
+}
+
+.tarjeta img {
+    width: 30%;
+    object-fit: cover;
+}
+
+.contenido {
+    width: 70%;
+    padding: 15px;
+}
+
+.titulo {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.subtitulo {
+    font-size: 14px;
+    color: gray;
+    margin: 5px 0;
+}
+
+.texto {
+    font-size: 12px;
+    color: #333;
+}
