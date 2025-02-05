@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tienda Online</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Tienda Online</h1>
+    </header>
+
+    <main>
+      <section class="productos">
+        <h2>Productos</h2>
+        <div class="producto">
+          <img src="img/oscar.png" alt="Producto 1" />
+          <h3>mapach</h3>
+          <p class="precio">€10.00</p>
+          <button class="agregar">Agregar al carrito</button>
+        </div>
+        <div class="producto">
+          <img src="img/cybertruck.jpg" alt="Producto 2" />
+          <h3>Cybertruck</h3>
+          <p class="precio">$15.00</p>
+          <button class="agregar">Agregar al carrito</button>
+        </div>
+        <div class="producto">
+          <img src="img/Gibraltar.png" alt="Producto 3" />
+          <h3>Gibraltar</h3>
+          <p class="precio">$20.00</p>
+          <button class="agregar">Agregar al carrito</button>
+        </div>
+      </section>
+
+      <section class="carrito">
+        <h2>Carrito de Compras</h2>
+        <ul id="lista-carrito">
+          <!-- Aquí se añadirán los productos -->
+           <li>---</li>
+        </ul>
+        <p>Total: <span id="total">$0.00</span></p>
+        <button class="pagar">Pagar</button>
+      </section>
+    </main>
+  </body>
+</html>

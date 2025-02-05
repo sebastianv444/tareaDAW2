@@ -1,0 +1,18 @@
+p {
+  font-size: 16px;
+  color: black;
+}
+/* es mejor usar el max-witdh, ya que aplica esta regla dentro de 0 a 600px,
+  mientras que el width normal solo aplica a 600px fijos. */
+@media (max-width: 600px) {
+  p {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 400px) {
+  p {
+    font-size: 16px;
+    color: red;
+  }
+}
