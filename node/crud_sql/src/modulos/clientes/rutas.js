@@ -10,8 +10,10 @@ const router = express.Router();
 router.get('/',(req,res)=>{
     /* res.send('ok todo'); */
     /* respuestas.success(req,res,'todo correcto desde el cliente',200); */
-    const todos = controlador.todos();
-    respuestas.success(req,res,todos,200);
+    const todos = controlador.todos().then((resultado)=>{
+        respuestas.success(req,res,todos,200);
+    });
+    
 });
 
 module.exports = router;
