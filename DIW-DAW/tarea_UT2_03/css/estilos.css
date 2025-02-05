@@ -60,7 +60,8 @@ nav {
 }
 
 .logo {
-  box-shadow: 0 0 15px 7px black, inset 0 0 30px 5px black;
+  /* el filter: drop-shadow() es para que la sombra se adapte a la imagen */
+  filter: drop-shadow(0px 0px 10px black);
   height: 100%;
   width: 90px;
   padding: 7px 16px;

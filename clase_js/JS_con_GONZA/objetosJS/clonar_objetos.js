@@ -1,7 +1,6 @@
 'use strict';
 
 //clonar objetos
-
 const producto = {
     nombre: "television 100 pulgadas",
     precio: 450,
