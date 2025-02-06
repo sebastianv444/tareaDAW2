@@ -21,11 +21,18 @@ function agregarAlCarrito(event) {
   console.log(carrito);
 
   //ver el dinero en tiempo real
+  mostrarDinero();
+}
+
+function mostrarDinero() {
+  let precioMostrar = 0;
+  const mostrarPrecio = document.querySelector("#total");
 
   carrito.forEach((producto) => {
-    console.log(producto.precio);
-    carritoMostrar.querySelector("#total")
+    precioMostrar += producto.precio;
   });
+
+  mostrarPrecio.textContent = `€${precioMostrar}.00`;
 }
 
 function comprobarProducto(event) {
@@ -41,13 +48,33 @@ function comprobarProducto(event) {
 }
 
 function eliminarDelCarrito(event) {
-  const id = event.target.dataset.id;
-  carrito.forEach((objeto) => {
-    objeto;
-  });
-  console.log(event.target.dataset.id);
+  const id = parseInt(event.target.dataset.id);
+  const productoContainer = event.target.parentElement.parentElement;
+  const producto = event.target.parentElement;
+
+  for (let i = 0; i < carrito.length; i++) {
+    if (carrito[i].id === id) {
+      carrito.splice(i, 1); 
+      console.log(carrito);
+      let posicionEliminar = Array.from(productoContainer.children).indexOf(
+        producto
+      );
+      let liAeliminar = productoContainer.children[posicionEliminar];
+      productoContainer.removeChild(liAeliminar);
+      mostrarDinero();
+      return console.log("se elimino del carrito");
+    }
+  }
 }
 
 botones.forEach((boton) => {
   boton.addEventListener("click", agregarAlCarrito);
 });
+
+function pagar(){
+  setTimeout(()=>{
+    
+  },3000)
+}
+
+document.querySelector(".pagar").addEventListener("click",)
