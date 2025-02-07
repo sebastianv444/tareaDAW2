@@ -9,6 +9,16 @@ function todos(){
     return db.todos(TABLA);
 }
 
+function uno(id){
+    return db.devolverUno(TABLA, id);
+}
+
+function eliminar(body){
+    return db.borrar(TABLA, body);
+}
+
 module.exports = {
-    todos
+    todos,
+    uno,
+    eliminar
 };

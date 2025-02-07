@@ -1,0 +1,7 @@
+comandos artisian:
+
+para usar artisan tenemos que situarnos con cd dentro de la carpeta de nuestro proyecto y ahí es donde podemos usar el comando de artisan asi: sudo /opt/lampp/bin/php artisan help
+
+OJO: nosotros usamos la ruta de /opt/lampp/bin/php porque ahí es donde esta instalado nuestro php y necesitamos usarlo en nuestro proyecto.
+
+crear controladores: sudo /opt/lampp/bin/php artisan make:controller PruebaController

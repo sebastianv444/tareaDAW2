@@ -1,9 +1,16 @@
 const express = require('express');
 const config = require('./config');
+const morgan = require('morgan');
 
 const clientes = require('./modulos/clientes/rutas');
 
 const app = express();
+
+app.use(morgan('dev'));
+app.use(express.json());
+/* el urlencoded {extended:true} por si vienen un array de string o otra cosa 
+para pasarlo a json */
+app.use(express.urlencoded({extended: true}))
 
 // configuracion basica de express
 /* estamos estableciendo una variable port con el valor despues de la coma */
