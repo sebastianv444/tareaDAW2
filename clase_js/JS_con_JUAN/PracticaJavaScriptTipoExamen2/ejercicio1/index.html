@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        gap: 80px;
+      }
+      button{
+        font-size: 18px;
+        font-weight: bold;
+        background-color: transparent;
+        border: 1.8px solid black;
+        padding: 5px 20px;
+        border-radius: 5px;
+        margin: 0px 10px;
+        cursor: pointer;
+        transition: 0.3s ease-out;
+      }
+      button:hover{
+        background-color: rgb(219, 218, 218);
+        transition: 0.3s ease-in-out;
+      }
+      #caja {
+        position: relative;
+        transition: 0.3s ease-out;
+        height: 150px;
+        width: 150px;
+        border: 1.5px solid black;
+        box-shadow: 0px 0px 8px rgb(49, 49, 49);
+      }
+    </style>
+</head>
+<body>
+    <div>
+        <button type="button" id="aumentar">+</button>
+        <button type="button" id="reducir">-</button>
+        <button type="button" id="cambiar-sentido">cambiar sentido</button>
+    </div>
+    <div id="caja"></div>
+    <script src="proceso.js"></script>
+</body>
+</html>
