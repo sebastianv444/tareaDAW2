@@ -20,19 +20,12 @@ function agregarAlCarrito(event) {
   li.querySelector(".eliminar").addEventListener("click", eliminarDelCarrito);
   console.log(carrito);
 
-  //ver el dinero en tiempo real
   mostrarDinero();
 }
 
 function mostrarDinero() {
-  let precioMostrar = 0;
-  const mostrarPrecio = document.querySelector("#total");
-
-  carrito.forEach((producto) => {
-    precioMostrar += producto.precio;
-  });
-
-  mostrarPrecio.textContent = `€${precioMostrar}.00`;
+  const total = carrito.reduce((acc, producto) => acc + producto.precio, 0);
+  document.querySelector("#total").textContent = `€${total.toFixed(2)}`;
 }
 
 function comprobarProducto(event) {
@@ -49,21 +42,13 @@ function comprobarProducto(event) {
 
 function eliminarDelCarrito(event) {
   const id = parseInt(event.target.dataset.id);
-  const productoContainer = event.target.parentElement.parentElement;
-  const producto = event.target.parentElement;
+  const index = carrito.findIndex((producto) => producto.id === id);
 
-  for (let i = 0; i < carrito.length; i++) {
-    if (carrito[i].id === id) {
-      carrito.splice(i, 1); 
-      console.log(carrito);
-      let posicionEliminar = Array.from(productoContainer.children).indexOf(
-        producto
-      );
-      let liAeliminar = productoContainer.children[posicionEliminar];
-      productoContainer.removeChild(liAeliminar);
-      mostrarDinero();
-      return console.log("se elimino del carrito");
-    }
+  if (index !== -1) {
+    carrito.splice(index, 1);
+    event.target.parentElement.remove();
+    mostrarDinero();
+    console.log("Producto eliminado del carrito");
   }
 }
 
@@ -71,10 +56,34 @@ botones.forEach((boton) => {
   boton.addEventListener("click", agregarAlCarrito);
 });
 
-function pagar(){
-  setTimeout(()=>{
-    
-  },3000)
+function pagar() {
+  const barraProgreso = document.getElementById("barra-progreso");
+  const mensajePago = document.getElementById("mensaje-pago");
+
+  // Mostrar la barra de progreso y reiniciar valores
+  barraProgreso.style.display = "block";
+  barraProgreso.value = 0;
+  mensajePago.textContent = "Procesando pago...";
+
+  let progreso = 0;
+  const intervalo = setInterval(() => {
+    progreso += 10;
+    barraProgreso.value = progreso;
+
+    if (progreso >= 100) {
+      clearInterval(intervalo);
+      mensajePago.textContent = "¡Pago completado con éxito!";
+
+      carrito = [];
+      document.getElementById("lista-carrito").innerHTML = "";
+      document.getElementById("total").textContent = "€0.00";
+
+      setTimeout(() => {
+        barraProgreso.style.display = "none";
+        mensajePago.textContent = "";
+      }, 2000);
+    }
+  }, 300);
 }
 
-document.querySelector(".pagar").addEventListener("click",)
+document.querySelector(".pagar").addEventListener("click",pagar);
