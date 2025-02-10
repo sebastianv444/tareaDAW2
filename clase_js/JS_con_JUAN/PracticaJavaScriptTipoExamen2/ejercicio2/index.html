@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        align-items: center;
+      }
+      button{
+        margin-top: 16px;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Generador De Nombres</h1><br>
+    <ul>
+        <li id="nombre">pepe</li>
+        <li id="nombre">pedro</li>
+        <li id="nombre">mario</li>
+        <li id="apellido">martinez</li>
+        <li id="apellido">moreno</li>
+        <li id="apellido">villalobos</li>
+    </ul>
+    <p id="mostrar" style="font-size: 18px; color: green; font-weight: bold;"></p>
+    <button type="button" id="generador">GENERAR</button>
+    <button type="button" id="portapapeles">COPIAR AL PORTAPAPELES</button>
+    <script src="proceso.js"></script>
+  </body>
+</html>

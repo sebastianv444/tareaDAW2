@@ -36,7 +36,13 @@ function reducir() {
   animacion();
 }
 
+function cambiarSentido(){
+  direccion *= -1;
+  animacion();
+}
+
 document.querySelector("#aumentar").addEventListener("click", aumentar);
 document.querySelector("#reducir").addEventListener("click", reducir);
+document.querySelector("#cambiar-sentido").addEventListener("click",cambiarSentido);
 
 animacion();

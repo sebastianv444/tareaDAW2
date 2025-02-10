@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        height: 100vh;
+        width: 100vw;
+        padding: 10px;
+      }
+      form {
+        display: inline-block;
+        background-color: aliceblue;
+        border: 1px solid black;
+        padding: 20px;
+        text-align: center;
+      }
+      button {
+        margin-top: 16px;
+        padding: 10px;
+      }
+      .coleccion__juego {
+        display: flex;
+        gap: 13px;
+        border: 1px solid black;
+        padding: 10px;
+      }
+      .coleccion__juego img {
+        width: 180px;
+        height: auto;
+      }
+      .coleccion__juego div {
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <form action=""> -->
+    <label for="nombre-game">Nombre: </label>
+    <input type="text" name="" id="nombre-game" /><br /><br />
+
+    <label for="archivo">Archivo:</label>
+    <input type="file" name="" id="archivo" /><br /><br />
+
+    <label for="precio-original">Precio:</label>
+    <input type="number" name="" id="precio-original" /><br /><br />
+
+    <label for="estado-actual">estado:</label>
+    <select name="" id="estado-actual">
+      <option value="precintado">Precintado</option>
+      <option value="abierto">Abierto</option>
+      <option value="sinCaja">Sin caja</option></select
+    ><br /><br />
+
+    <label for="fecha-lanzamiento">Fecha De Lanzamiento:</label>
+    <input type="date" name="" id="fecha-lanzamiento" /><br />
+
+    <button type="click">ENVIAR</button>
+    <!-- </form> -->
+
+    <div id="coleccion">
+      <div class="coleccion__juego">
+        <img src="./img/cocheTesla1.jpeg" alt="" />
+        <div>
+          <h3>Titulo</h3>
+          <p>precio:</p>
+          <p>estado:</p>
+          <p>fecha:</p>
+        </div>
+      </div>
+    </div>
+
+    <script src="proceso.js"></script>
+  </body>
+</html>
