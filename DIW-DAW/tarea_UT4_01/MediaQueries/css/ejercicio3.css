@@ -24,3 +24,9 @@ a:hover {
     margin: 5px 0;
   }
 }
+
+/* IMPORTANTE!! el siguiente es para añadir un degradado a una imagen:
+mask-image: linear-gradient(
+        black 80%,
+        transparent
+    ); */

@@ -1,0 +1,201 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Righteous&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* body {} */
+
+/* BARRA DE NAVEGACION */
+header {
+  width: 100%;
+  height: 100%;
+  font-family: "Inter", serif;
+  font-weight: bold;
+  position: fixed;
+  z-index: 100;
+}
+nav {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  padding: 38px 70px;
+}
+
+nav .logo img {
+  width: 66px;
+  height: 72px;
+  transition: 0.3s;
+  transition: 0.3s ease-in;
+}
+
+nav .logo img:hover {
+  filter: drop-shadow(0px 0px 15px #26a66a);
+  transition: 0.3s ease-in-out;
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  flex-flow: row wrap;
+  gap: 45px;
+  justify-content: center;
+  align-items: center;
+  font-size: 19px;
+}
+
+.menu .menu__item {
+  margin-left: 28px;
+}
+
+.menu .menu__item a {
+  color: white;
+  text-decoration: none;
+  transition: 0.3s ease-in;
+}
+
+.menu .menu__item a:hover {
+  color: #26a66a;
+  transition: 0.3s ease-in-out;
+}
+
+.menu .menu__item--seleccionado a {
+  color: #26a66a;
+}
+
+/* SUBMENU */
+.menu .menu__item--submenu {
+  position: relative;
+}
+
+.submenu {
+  display: block;
+  list-style: none;
+  position: absolute;
+  left: 65%;
+  transform: translateX(-50%);
+  padding: 10px 0;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.menu .menu__item--submenu:hover > .submenu {
+  opacity: 1;
+  visibility: visible;
+}
+
+.submenu .submenu__item {
+  padding: 14px 20px;
+}
+
+.submenu .submenu__item a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  transition: 0.3s ease-in;
+}
+
+.submenu .submenu__item a:hover {
+  color: #26a66a;
+  transition: 0.3s ease-in-out;
+}
+
+.menu .menu__item--submenu:hover > .submenu {
+  display: block;
+}
+/* SUBMENU */
+
+.menu hr {
+  height: 50%;
+  width: 2px;
+  background-color: white;
+  border: none;
+}
+
+.menu .menu__special {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 28px;
+}
+
+.menu .menu__tema {
+  background-color: white;
+  height: 35px;
+  width: 35px;
+  border-radius: 100%;
+  padding: 6px;
+  transition: 0.3s ease-in;
+}
+
+.menu .menu__tema:hover {
+  background-color: black;
+  transition: 0.3s ease-in-out;
+}
+
+.menu .menu__tema img {
+  width: 23px;
+  height: 23px;
+}
+
+.menu .menu__idioma {
+  background-color: white;
+  border-radius: 100%;
+  padding: 5px 6px;
+  width: 35px;
+  height: 35px;
+}
+
+.menu .menu__idioma a {
+  color: black;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 700;
+  transition: 0.3s ease-in;
+}
+
+.menu .menu__idioma:hover {
+  background-color: #26a66a;
+  transition: 0.3s ease-in-out;
+}
+/* BARRA DE NAVEGACION */
+
+/* CONTENIDO PRINCIPAL */
+.skills {
+  background-color: #262626;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+}
+
+.skills h1 {
+  font-family: "Righteous", serif;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #26a66a;
+}
+
+.skills-container {
+  display: flex;
+  gap: 40px;
+}
+
+.front-end,
+.back-end,
+.development-tools {
+  background-color: #333;
+  padding: 20px;
+  border-radius: 10px;
+  width: 250px;
+  text-align: center;
+  font-family: "Inter", serif;
+}
