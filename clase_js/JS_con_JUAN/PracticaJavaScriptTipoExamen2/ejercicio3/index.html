@@ -26,17 +26,38 @@
         margin-top: 16px;
         padding: 10px;
       }
-      .coleccion__juego {
+      .coleccion {
         display: flex;
+        flex-flow: row wrap;
+      }
+      .coleccion__juego {
+        display: inline-block;
         gap: 13px;
         border: 1px solid black;
-        padding: 10px;
+        padding: 16px;
+        box-shadow: 0px 0px 10px black;
+        background-color: rgb(197, 195, 195);
+        margin-top: 30px;
+        margin-right: 48px;
+        transition: 0.3s ease-in;
       }
       .coleccion__juego img {
-        width: 180px;
+        width: 200px;
         height: auto;
+        border: 1px solid black;
       }
       .coleccion__juego div {
+        float: right;
+        margin-left: 31px;
+      }
+      .coleccion__juego div h2{
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin-bottom: 30px;
+      }
+      .coleccion__juego div p {
+        margin-top: 10px;
+        font-family:'Courier New', Courier, monospace;
+        font-weight: bold;
       }
     </style>
   </head>
@@ -61,21 +82,24 @@
     <label for="fecha-lanzamiento">Fecha De Lanzamiento:</label>
     <input type="date" name="" id="fecha-lanzamiento" /><br />
 
-    <button type="click">ENVIAR</button>
+    <button type="button" id="añadir">AÑADIR</button>
     <!-- </form> -->
 
     <div id="coleccion">
-      <div class="coleccion__juego">
-        <img src="./img/cocheTesla1.jpeg" alt="" />
+      <!-- <div class="coleccion__juego">
+        <img
+          src="./img/AssassinsCreedShadows.png"
+          alt=""
+          style="box-shadow: 0px 0px 13px black"
+        />
         <div>
-          <h3>Titulo</h3>
+          <h2>Assassins Creed Shadows</h2>
           <p>precio:</p>
           <p>estado:</p>
           <p>fecha:</p>
         </div>
-      </div>
+      </div> -->
     </div>
-
     <script src="proceso.js"></script>
   </body>
 </html>
