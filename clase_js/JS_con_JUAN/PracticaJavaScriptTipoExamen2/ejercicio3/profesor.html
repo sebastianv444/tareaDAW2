@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .juego {
+            border: 2px solid black;
+            margin: 20px;
+            padding: 20px;
+            width: 500px;
+            display: flex;
+            justify-content: space-around;
+            font-size: 1.1em;
+        }
+
+        .juego div {
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <input type="text" name="" id="nombre" placeholder="Nombre Juego" value="">
+        <input type="file" name="" id="imagen">
+        <input type="number" name="" id="precioSalida" placeholder="0.00" value="">
+        <input type="date" name="" id="fechaSalida" value="">
+        <select name="" id="estado">
+            <option value="precintado">Precintado</option>
+            <option selected value="abierto">Abierto</option>
+            <option value="sinCaja">Sin caja</option>
+        </select>
+        <button onclick="agregar()">Añadir</button>
+    </div>
+    <br><br>
+    <div>
+        <input type="search" name="" id="busqueda">
+        <button onclick="buscar()">Buscar</button>
+    </div>
+    <section>
+        <h2>Colección</h2>
+        <p>Valor colección: <span id="valorColeccion"></span></p>
+        <div id="coleccion">
+
+        </div>
+    </section>
+</body>
+<script>
+    let COLECCION = {
+        "juegos": [],
+        "valorTotal": 0
+    }
+
+    let inpNombre = document.getElementById('nombre');
+    let inpImg = document.getElementById('imagen')
+    let inpPrecioSalida = document.getElementById('precioSalida');
+    let inpFechaSalida = document.getElementById('fechaSalida');
+    let inpEstado = document.getElementById('estado');
+
+    // Cargo la colección guardada si existe
+    document.addEventListener("DOMContentLoaded", () => {
+        let coleccionGuardada = localStorage.getItem("coleccion")
+
+        if (coleccionGuardada) {
+            COLECCION = JSON.parse(coleccionGuardada);
+            actualizarColeccion();
+        }
+    })
+
+
+    function agregar() {
+        let juego = crearObjetoJuego()
+
+        if (juego.nombre == '' ||
+            juego.fechaSalida == '' ||
+            juego.precioSalida <= 0 || isNaN(juego.precioSalida) ||
+            juego.imagen == '') {
+
+            alert("Faltan campos en el formulario o son erroneos.");
+            return;
+        }
+
+        inpEstado.value = "abierto";
+        inpFechaSalida.value = '';
+        inpImg.value = '';
+        inpNombre.value = '';
+        inpPrecioSalida.value = '0';
+
+        COLECCION.juegos.push(juego);
+        actualizarColeccion()
+    }
+
+    function crearObjetoJuego() {
+        let juego = {
+            'nombre': inpNombre.value,
+            'imagen': inpImg.value.split('\\').pop(),
+            'precioSalida': parseFloat(inpPrecioSalida.value),
+            'fechaSalida': inpFechaSalida.value,
+            'estado': inpEstado.value
+        }
+
+        return juego;
+    }
+
+    // Le paso un juego a la función y me calcula el precio actual del juego.
+    function calcularPrecioActual(juego) {
+        let precioActual = parseFloat(juego.precioSalida);
+        let annosDesdeSalida = Math.trunc((new Date().getTime() - new Date(juego.value).getTime()) / 1000 / 60 / 60 / 24 / 365);
+
+        for (let i = 0; i < 6 && annosDesdeSalida > 0; i++) {
+            --annosDesdeSalida;
+            precioActual *= 0.9; // Aplico -10%
+        }
+
+        for (let i = 0; i < annosDesdeSalida; i++) {
+            precioActual *= 1.2; // Aplico +20%
+        }
+
+        switch (juego.estado) {
+            case "abierto":
+                precioActual *= 0.7; // Aplico -30%
+                break;
+            case "sinCaja":
+                precioActual *= 0.3; // Aplico -70%
+                break;
+        }
+
+        return parseFloat(precioActual.toFixed(2));
+    }
+
+    // Actualizo el precio total de la coleccion y muestro los juegos en pantalla
+    function actualizarColeccion() {
+        let html = "";
+        COLECCION.valorTotal = 0;
+
+        COLECCION.juegos.forEach((j) => {
+            html += generarHTMLJuego(j);
+            COLECCION.valorTotal += calcularPrecioActual(j);
+            console.log(j);
+            
+        })
+
+        document.getElementById('coleccion').innerHTML = html;
+        document.getElementById('valorColeccion').innerHTML = COLECCION.valorTotal + "€";
+
+
+        // Guardar el contenido de la web en localStorage
+        localStorage.setItem("coleccion", JSON.stringify(COLECCION));
+    }
+
+    function generarHTMLJuego(juego) {
+        let html = `
+            <div class="juego">
+                <img src="./img/${juego.imagen}" alt="">
+                <div>
+                    <p>Nombre: ${juego.nombre}</p>
+                    <p>Estado: ${juego.estado}</p>
+                    <p>Fecha de salida: ${juego.fechaSalida}</p>
+                    <p>Precio de salida: ${juego.precioSalida}€</p>
+                    <p>Valor de venta actual: ${calcularPrecioActual(juego)}€</p>
+                    <button onclick="eliminar('${juego.nombre}')">Eliminar de la colección</button>
+                </div>
+            </div>
+        `
+        return html;
+    }
+
+    function eliminar(nombre) {
+        // Busco el juego de la coleccion con el mismo nombre y me quedo su posicion
+        let posicion = COLECCION.juegos.findIndex((j) => j.nombre == nombre);
+
+        // Aunque no deberia ser posible ya que a la funcion eliminar la llamamos sin entrada de usuario
+        // Para que no me de pegue una excepcion, si findIndex() no ha encontrado el elemento me devuelve -1
+        // Si no lo ha encontrado salgo de la funcion
+        if (posicion == -1) {
+            return;
+        }
+
+        // Elimino 1 elemento del array a partir de la posicion encontrada
+        COLECCION.juegos.splice(posicion, 1);
+        actualizarColeccion();
+    }
+
+    function buscar() {
+        let aBuscar = document.getElementById("busqueda").value
+
+        if (aBuscar == "") {
+            actualizarColeccion();
+            return;
+        }
+
+        // Me creo un nuevo array a partir del filtrar el original
+        // .filter() no modifica el array original
+        let filtrado = COLECCION.juegos.filter((j) => {
+            return j.nombre.toUpperCase().includes(aBuscar.toUpperCase())
+        })
+
+        let html = "";
+
+        filtrado.forEach((j) => {
+            html += generarHTMLJuego(j);
+        })
+
+        document.getElementById('coleccion').innerHTML = html;
+    }
+
+</script>
+
+</html>

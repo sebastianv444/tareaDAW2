@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        width: 100vw;
+        height: 100vh;
+        padding: 20px;
+      }
+      button{
+        padding: 6px 24px;
+        border: 1px solid black;
+        cursor: pointer;
+        transition: 0.3s ease-in;
+        font-size: 17px;
+        border-radius: 10px;
+        margin-right: 20px;
+      }
+      button:hover{
+        transition: 0.3s ease-in;
+        background-color: azure;
+      }
+
+      #caja {
+        width: 150px;
+        height: 150px;
+        border: 2px solid black;
+        background-color: rgb(165, 166, 166);
+        box-shadow: 0px 0px 10px black;
+        transition: 0.3s ease-in-out;
+        position: relative;
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+    <button type="button" id="aumentar">aumentar</button>
+    <button type="button" id="reducir">reducir</button><br /><br />
+
+    <div id="caja"></div>
+
+    <script>
+      const pantallaAlto = window.innerHeight;
+      const caja = document.querySelector("#caja");
+      let direccion = 1;
+      let i = 0;
+      let intervalo;
+      let velocidad = 50;
+
+      function proceso() {
+        intervalo = setInterval(()=>{
+            i += 10 * direccion;
+            caja.style.top = `${i}px`;
+            if(i + caja.clientWidth >= pantallaAlto || i < 0){
+                direccion *= -1;
+            }
+            console.log(i);
+            
+        },velocidad);
+      }
+
+      function aumentar() {
+        proceso();
+      }
+
+      function reducir() {}
+
+      document.querySelector("#aumentar").addEventListener("click", aumentar);
+      document.querySelector("#reducir").addEventListener("click", reducir);
+    </script>
+  </body>
+</html>
