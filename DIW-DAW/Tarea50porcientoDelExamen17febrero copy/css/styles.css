@@ -165,7 +165,7 @@ nav .logo img:hover {
 /* BARRA DE NAVEGACION */
 
 /* CONTENIDO PRINCIPAL */
-.skills {
+.about {
   background-color: #262626;
   width: 100vw;
   height: 100vh;
@@ -198,4 +198,82 @@ nav .logo img:hover {
   width: 250px;
   text-align: center;
   font-family: "Inter", serif;
+}
+/* CONTENIDO PRINCIPAL */
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 80%;
+  margin: auto;
+  gap: 170px;
+}
+
+.experience-box {
+  position: relative;
+  width: 250px;
+  height: 250px;
+}
+
+.green-box {
+  width: 240px;
+  height: 240px;
+  background: #158553;
+  border-radius: 10px;
+  position: absolute;
+  bottom: 0;
+}
+
+.gray-box {
+  width: 200px;
+  height: 200px;
+  background: #ddd;
+  border-radius: 10px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.icon {
+  width: 50px;
+  height: 50px;
+  background: #555;
+  border-radius: 10px;
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon i {
+  color: white;
+  font-size: 20px;
+}
+
+.experience-text {
+  position: absolute;
+  bottom: -20px;
+  left: 50px;
+  font-size: 18px;
+}
+
+.experience-text span {
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.contact {
+  margin-top: 30px;
+}
+
+.contact p {
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+.contact i {
+  margin-right: 10px;
 }
