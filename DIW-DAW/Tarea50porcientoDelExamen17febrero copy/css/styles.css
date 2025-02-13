@@ -199,81 +199,149 @@ nav .logo img:hover {
   text-align: center;
   font-family: "Inter", serif;
 }
-/* CONTENIDO PRINCIPAL */
 
+/* CONTENIDO PRINCIPAL */
 .container {
   display: flex;
   justify-content: center;
   align-items: flex-start;
   width: 80%;
-  margin: auto;
-  gap: 170px;
+  gap: 220px;
+  padding-top: 100px;
 }
 
-.experience-box {
-  position: relative;
-  width: 250px;
-  height: 250px;
+.container__izquierda{
+  
 }
 
-.green-box {
+.green-box{
   width: 240px;
-  height: 240px;
-  background: #158553;
+  height: 250px;
+  background: #278C5D;
   border-radius: 10px;
-  position: absolute;
-  bottom: 0;
+  position: absolute;  
 }
 
-.gray-box {
-  width: 200px;
-  height: 200px;
-  background: #ddd;
+.gray-box{
+  width: 260px;
+  height: 290px;
+  background: #D9D9D9;
   border-radius: 10px;
-  position: absolute;
-  top: 0;
-  right: 0;
+  position: relative;
+  left: 130px;
+  bottom: 128px;
 }
 
-.icon {
-  width: 50px;
-  height: 50px;
-  background: #555;
+.icon{
+  width: 80px;
+  height: 80px;
+  background: #707070;
   border-radius: 10px;
-  position: absolute;
-  top: -10px;
-  left: -10px;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  left: 25px;
+  bottom: 21px;
+}
+
+.icon img{
+  width: 47px;
+  height: 47px;
+}
+
+.experience-text {
+  position: relative;
+  left: 247px;
+  bottom: 110px;
+  display: flex;
+  flex-direction: row;
+}
+
+.experience-text hr{
+  margin-right: 10px;
+  height: 50px;
+  width: 4px;
+  background-color: white;
+  border: none;
+}
+
+.experience-text p{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "inter", serif;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.experience-text p span{
+  font-weight: 500;
+  font-size: 40px;
+  font-family: "Righteous", serif;
+  font-size: 37px;
+  margin-right: 5px;
+}
+.contact{
+  display: flex;
+  flex-flow: column;
+  align-items: start;
+  gap: 20px;
+  font-family: "inter", serif;
+  font-weight: 700;
+  position: relative;
+  bottom: 60px;
+  font-size: 13px;
+}
+.contact__email{
+  display: flex;
+  flex-flow: row;
   justify-content: center;
   align-items: center;
 }
 
-.icon i {
+.contact__email div{
+  padding: 7px 3px;
+  width: 37px;
+  height: 35px;
+  background:url("../img/about/Ellipse\ 3.png") center no-repeat;
+  background-size: cover;
+  margin-right: 8px;
+}
+
+.contact__email img{
+  width: 20px;
+  height: 20px;
+}
+
+/* ABOUT ME */
+
+.container__derecha{
+  text-align: start;
+  max-width: 340px;
+  font-family: "Righteous", serif;
+}
+
+.container__derecha--descripcion{
+  font-weight: 0;
+  font-family: 'inter';
+}
+
+.container__derecha li{
+  color: #26a66a;
+}
+
+.container__derecha li p{
   color: white;
-  font-size: 20px;
+  font-family: 'inter';
 }
 
-.experience-text {
-  position: absolute;
-  bottom: -20px;
-  left: 50px;
-  font-size: 18px;
+.container__derecha li p i{
+  color: #B0B0B0;
 }
 
-.experience-text span {
-  font-weight: bold;
-  font-size: 24px;
+.container__derecha span{
+  color: #26a66a;
 }
 
-.contact {
-  margin-top: 30px;
-}
-
-.contact p {
-  font-size: 16px;
-  margin: 10px 0;
-}
-
-.contact i {
-  margin-right: 10px;
-}
+/* ABOUT ME */
