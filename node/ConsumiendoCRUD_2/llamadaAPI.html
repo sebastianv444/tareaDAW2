@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Datos desde el Servidor</h1>
+    <button type="button" id="obtenerDatos">Obtener Datos</button>
+    <p id="resultados"></p>
+    <script>
+        document.querySelector("#obtenerDatos").addEventListener("click",()=>{
+            fetch("http://localhost:3000/api/mensaje") // url de la api
+                .then(respuesta => respuesta.json())
+                .then(data => {
+                    document.querySelector("#resultados").textContent = data.mensaje;
+                })
+                /* 
+                    error cross: es cuando estas llamando a otro servidor diferente al servidor
+                    donde estas ejecutando este html con openLiveServer
+                    
+                    solucion: instalar en el servidor la dependecia de cors(npm i cors), 
+                    y ejecutar el servidor con node --watch.
+                */
+                .catch(error => console.error("error de obtencion de data", error))
+        })
+    </script>
+</body>
+</html>
