@@ -74,7 +74,7 @@ function añadirHTML(libro) {
 
   document.querySelector(`#${libro.estado}`).innerHTML += html;
 
-  document.querySelector("#actualizar").addEventListener("click", () => {
+    document.querySelector("#actualizar").addEventListener("click", () => {
     document.querySelector("#actualizar__seccion").hidden = false;
   });
 
