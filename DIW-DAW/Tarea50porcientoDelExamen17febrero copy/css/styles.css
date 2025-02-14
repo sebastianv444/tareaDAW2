@@ -7,7 +7,9 @@
   box-sizing: border-box;
 }
 
-/* body {} */
+body {
+  background-color: #262626;
+}
 
 /* BARRA DE NAVEGACION */
 header {
@@ -33,7 +35,7 @@ nav .logo img {
 }
 
 nav .logo img:hover {
-  filter: drop-shadow(0px 0px 15px #26a66a);
+  filter: drop-shadow(0px 0px 20px #26a66a);
   transition: 0.3s ease-in-out;
 }
 
@@ -166,8 +168,7 @@ nav .logo img:hover {
 
 /* CONTENIDO PRINCIPAL */
 .about {
-  background-color: #262626;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -352,8 +353,87 @@ nav .logo img:hover {
 
 /* ABOUT ME */
 
+/* FOOTER */
+
+footer{
+  height: 210px;
+  background-color: #26A66A;
+  display: flex;
+  justify-content: center;
+  gap: 23px;
+  align-items: center;
+  flex-flow: column wrap;
+  color: white;
+  font-family: 'inter';
+}
+
+footer div{
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+footer .footer__logo{
+  height: 46px;
+  width: 46px;
+}
+
+footer .footer__linkedin{
+  height: 34px;
+  width: 34px;
+}
+
+footer .footer__git{
+  height: 32px;
+  width: 39px;
+}
+
+footer .footer__email{
+  height: 29px;
+  width: 31px;
+}
+
+footer p{
+  font-size: 14px;
+}
+/* FOOTER */
+
 /* MEDIA QUERY */
 @media (max-height: 720px) {
+
+  footer{
+    height: 180px;
+  }
+  
+  footer div{
+    gap: 9px;
+  }
+  
+  footer .footer__logo{
+    height: 46px;
+    width: 46px;
+  }
+  
+  footer .footer__linkedin{
+    height: 34px;
+    width: 34px;
+  }
+  
+  footer .footer__git{
+    height: 32px;
+    width: 39px;
+  }
+  
+  footer .footer__email{
+    height: 29px;
+    width: 31px;
+  }
+  
+  footer p{
+    font-size: 14px;
+  }
 
   /* MENU */
   nav {
@@ -519,3 +599,6 @@ nav .logo img:hover {
 }
 
 /* MEDIA QUERY */
+@media (width <= 430px) and (hight <= 932px){
+  
+}
