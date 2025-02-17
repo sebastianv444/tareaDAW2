@@ -19,11 +19,15 @@
             <img src="../img/nav/LogoPortfoliosVerde.png" alt="Logo" />
           </a>
         </div>
+        <input type="checkbox" id="movil-toggle" class="movil-toggle" />
+        <label for="movil-toggle" class="movil-btn" aria-label="Abrir menú">
+          <span class="movil-btn-line"></span>
+          <span class="movil-btn-line"></span>
+          <span class="movil-btn-line"></span>
+        </label>
         <ul class="menu">
           <li class="menu__item"><a href="">about me</a></li>
-          <li class="menu__item menu__item--seleccionado">
-            <a href="">skills</a>
-          </li>
+          <li class="menu__item menu__item--seleccionado"><a href="">skills</a></li>
           <li class="menu__item menu__item--submenu">
             <a href="">project</a>
             <ul class="submenu">
@@ -38,9 +42,9 @@
           <hr />
           <div class="menu__special">
             <li class="menu__tema">
-              <a href=""><img src="../img/nav/lun.png" alt="" /></a>
+              <a id="nocturno"><img src="../img/nav/lun.png" alt="" /></a>
             </li>
-            <li class="menu__idioma"><a href="">EN</a></li>
+            <li class="menu__idioma"><a id="idioma">EN</a></li>
           </div>
         </ul>
       </nav>
@@ -109,7 +113,62 @@
                 </p>
               </li>
             </ul>
+            <div class="contact">
+              <div class="contact__email">
+                <div><img src="../img/about/image 5.png" alt="" /></div>
+                <p>sebastian12verositi@gmail.com</p>
+              </div>
+              <div class="contact__email">
+                <div><img src="../img/about/image 6.png" alt="" /></div>
+                <p>+34 123 45 67 89</p>
+              </div>
+            </div>
           </div>
+        </div>
+      </section>
+
+      <section class="seccion2">
+
+        <div class="carrusel">
+          <div class="carrusel-contenedor">
+            <div class="carrusel-item">
+              <picture>
+                <source srcset="../img/carrusel/netflix.jpg" type="image/webp" media="(min-width: 768px)">
+                <source srcset="../img/carrusel/netflixMovil.jpg" type="image/webp" media="(max-width: 430px)">
+                <img src="../img/carrusel/netflix.jpg" alt="Descripción de la imagen 1">
+              </picture>
+            </div>
+          
+            <div class="carrusel-item">
+              <picture>
+                <source srcset="../img/carrusel/the-last-of-us.jpg" type="image/webp" media="(min-width: 768px)">
+                <source srcset="../img/carrusel/the-last-of-us-Movil.jpg" type="image/webp" media="(max-width: 430px)">
+                <img src="../img/carrusel/the-last-of-us.jpg" alt="Descripción de la imagen 2">
+              </picture>
+            </div>
+          
+            <div class="carrusel-item">
+              <picture>
+                <source srcset="../img/carrusel/peakyBlinders.jpg" type="image/webp" media="(min-width: 768px)">
+                <source srcset="../img/carrusel/peakyBlinders-Movil.jpg" type="image/webp" media="(max-width: 430px)">
+                <img src="../img/carrusel/peakyBlinders.jpg" alt="Descripción de la imagen 3">
+              </picture>
+            </div>
+          </div>
+        </div>
+
+        <div class="texto">
+          <h2>ide<span>a</span>s</h2><br>
+          <p>These are just a few of the many ideas I have planned for the future, including mobile applications, 
+            smart TV apps, video games, and countless other projects. I am deeply passionate about technology and 
+            innovation, and I constantly push myself to the limit, always striving for excellence.
+            Every time I embark on learning something new, I do so with unwavering determination and self-belief, 
+            knowing that each new skill I acquire will help me bring these ideas to life. I firmly believe that 
+            continuous growth and improvement are the keys to turning creative visions into reality. One of my 
+            greatest aspirations is to develop video games, a goal that has been close to my heart for a long time. I 
+            envision creating immersive and engaging experiences not only for the web but also for consoles, PCs, and 
+            mobile devices.
+            </p>
         </div>
       </section>
     </main>
@@ -120,24 +179,21 @@
         alt=""
         class="footer__logo"
       />
+
       <div>
-        <a href="../godOfWar/Codigo/HTML/index.html"
-          ><img
-            src="../img/footer/icons8-linkedin-90 1.png"
-            alt=""
-            class="footer__linkedin"
-        /></a>
-        <a href=""
-          ><img
-            src="../img/footer/icons8-github-96 1.png"
-            alt=""
-            class="footer__git"
-        /></a>
-        <a href=""
-          ><img src="../img/footer/circulo.png" alt="" class="footer__email"
-        /></a>
+        <a href="https://www.linkedin.com" target="_blank">
+          <img src="../img/footer/icons8-linkedin-90 1.png" alt="LinkedIn" class="footer__linkedin" />
+        </a>
+        <a href="https://github.com/sebastianv444" target="_blank">
+          <img src="../img/footer/icons8-github-96 1.png" alt="GitHub" class="footer__git" />
+        </a>
+        <a href="mailto:sebastian12verositi@gmail.com">
+          <img src="../img/footer/circulo.png" alt="Email" class="footer__email"/>
+        </a>
       </div>
       <p>&copy; 2024 All rights reserved by Sebastián</p>
     </footer>
+
+    <script src="../JS/proceso.js"></script>
   </body>
 </html>
