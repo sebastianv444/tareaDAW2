@@ -1,5 +1,7 @@
 <?php
 
+/* Estas llamadas semillas es opcional para probar con datos de prueba */
+
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;

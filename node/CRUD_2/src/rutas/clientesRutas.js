@@ -6,7 +6,7 @@ const clientesController = require('../controllers/clientesController');
 
 // aquí definiremos las rutas
 router.get('/',clientesController.listar);
-
 router.get("/add", clientesController.guardar);
+router.get('/borrar/:id',clientesController.borrar);
 
 module.exports = router;
