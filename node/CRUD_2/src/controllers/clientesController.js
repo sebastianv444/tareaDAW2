@@ -27,7 +27,6 @@ controlador.listar = (req, res) => {
 
 controlador.guardar = (req, res) => {
   const data = req.body;
-  
   req.getConnection((err, conexion) => {
     /* en el segundo parametro es donde se recoge la respuesta de la consulta a la base
         de datos, de manera que clientes tendra la respuesta completa en un array con los datos. */
@@ -42,7 +41,17 @@ controlador.guardar = (req, res) => {
 };
 
 controlador.borrar = (req, res) => {
-  res.send("hola majo");
+  const id = req.params.id;
+  const data = req.body.query;
+  console.log(data);
+  // const { id } = req.params;
+  // la interrogacíon se remplaza por el que especificaste en los '[]'.
+  req.getConnection('DELETE FROM clientes WHERE id = ?',[id], (err,rows)=>{
+    if(err){
+      console.log(err);
+    }
+    res.redirect('/');
+  });
 };
 
 module.exports = controlador;

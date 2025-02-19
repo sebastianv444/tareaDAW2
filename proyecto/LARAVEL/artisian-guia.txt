@@ -1,7 +1,41 @@
 comandos artisian:
 
-para usar artisan tenemos que situarnos con cd dentro de la carpeta de nuestro proyecto y ahí es donde podemos usar el comando de artisan asi: sudo /opt/lampp/bin/php artisan help
+para usar artisan tenemos que situarnos con cd dentro de la carpeta de "nuestro proyecto", y ahí es donde podemos usar el comando de artisan asi: sudo /opt/lampp/bin/php artisan help
 
-OJO: nosotros usamos la ruta de /opt/lampp/bin/php porque ahí es donde esta instalado nuestro php y necesitamos usarlo en nuestro proyecto.
+OJO!!: nosotros usamos la rutas de /opt/lampp/bin/php porque ahí es donde esta instalado nuestro php y necesitamos usarlo en nuestro proyecto.
 
-crear controladores: sudo /opt/lampp/bin/php artisan make:controller PruebaController
+crear controladores: 
+sudo /opt/lampp/bin/php artisan make:controller PruebaController
+
+Crear controladores con metodos por defecto, el --resource es el que me crea varios metodos en mi controlador:
+sudo /opt/lampp/bin/php artisan make:controller UsuarioController --resource
+
+para listar los routers con las peticiones especificadas:
+sudo /opt/lampp/bin/php artisan route:list
+
+para añadir middleware a tu proyecto:
+sudo /opt/lampp/bin/php artisan make:middleware AquiVaElNombreDeTuMiddleware
+
+para crear semillas:
+sudo /opt/lampp/bin/php artisan make:seed frutas_seed
+
+para correr una semilla creada y rellenada:
+sudo /opt/lampp/bin/php artisan db:seed --class=frutas_see
+
+para crear modelos:
+/opt/lampp/bin/php artisan make:model nombre_modelo
+
+para crear un sistema de login tenemos que usar la interfazUI de laravel(vue):
+     1) incluir el UI: /opt/lampp/bin/php /opt/lampp/bin/composer require laravel/ui
+     2) incluir vue: /opt/lampp/bin/php artisan ui vue --auth
+     3) instalar la autenticacion con vue: npm install && npm run dev
+
+para crear un login:
+/opt/lampp/bin/php artisan make:auth
+
+IMPORTANTE: cuando subes un proyecto hacerlo sin el vendor(parecido al node_modules), y luego para 
+instalar esta carpeta vendor en nuestro proyecto para que funcione correctamente se hace con el comando:
+     1) hacer cd en el proyecto.
+     2) /opt/lampp/bin/composer install (si no te deja, prueba poniendo esto al principio seguido del resto del comando /opt/lampp/bin/php)
+     3) configurar el archivo.env(porque si se descarga el proyecto desde Git ese archivo no existe)
+     4) /opt/lampp/bin/php artisan key:generate (obliga a laravel para crear un clave para el proyecto)

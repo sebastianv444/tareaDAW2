@@ -22,14 +22,14 @@ class Image extends Model
         id de image que tambien guardamos en comentarios en la base de datos que va a
         relacionarlos */
         // internamente nos esta haciendo como un innerJoin
-        return $this->hasMany('App\Models\comment');
+        return $this->hasMany('App\Models\Comment');
     }
 
     public function likes(){
 
         /* hasMany: */
         // internamente nos esta haciendo como un innerJoin
-        return $this->hasMany('App\Models\like');
+        return $this->hasMany('App\Models\Like');
     }
 
     // relación muchos a uno.

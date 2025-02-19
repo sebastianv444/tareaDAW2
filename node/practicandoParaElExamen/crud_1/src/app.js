@@ -13,8 +13,8 @@ app.set('view engine', 'ejs');
 app.set('views',path.join(__dirname,'views'))
 
 // middleware
-app.use(express.urlencoded({extended: true}));
-app.use(morgan('dev'));
+app.use(express.urlencoded({ extended: true }));
+app.use(morgan("dev"));
 
 // rutas
 app.use(alumnos);
