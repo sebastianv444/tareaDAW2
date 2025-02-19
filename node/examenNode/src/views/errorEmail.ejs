@@ -1,0 +1,12 @@
+<%- include("partials/_header") %>
+
+<form action="/" method="get"></form>
+    <button class="btn btn-info" type="submit">ir al inicio</button>
+</form>
+<form action="/listarComentarios" method="get">
+    <button class="btn btn-info" type="submit">listar comentario</button>
+</form>
+
+<h1>Error El email: <%= email %><br> No exixste</h1>
+
+<%- include("partials/_footer") %>

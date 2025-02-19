@@ -1,0 +1,80 @@
+<%- include("partials/_header") %>
+
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-8">
+
+            <form action="/comentarios" method="get">
+                <button class="btn btn-info" type="submit">crear comentario</button>
+            </form>
+            <form action="/listarComentarios" method="get">
+                <button class="btn btn-info" type="submit">listar comentario</button>
+            </form>
+            <table class="table table-dark table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <td>n°</td>
+                        <td>Nombre</td>
+                        <td>Direccion</td>
+                        <td>Telefono</td>
+                        <td>Acciones</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (data) { %> <% for(var i = 0; i < data.length;
+                    i++) {
+                    %>
+                    <tr>
+                        <td><%= (i + 1) %></td>
+                        <td><%= data[i].nombre %></td>
+                        <td><%= data[i].direccion %></td>
+                        <td><%= data[i].telefono %></td>
+                        <td class="d-flex gap-2">
+                            <a href="/actualizar/<%= data[i].id %>"
+                                class="btn btn-info">
+                                Editar
+                            </a>
+                            <a href="/borrar/<%= data[i].id %>"
+                                class="btn btn-danger">
+                                Borrar
+                            </a>
+                        </td>
+                    </tr>
+                    <% } %> <% } %>
+                </tbody>
+            </table>
+
+        </div>
+        <div class="col-md-4">
+            <div class="card-body">
+                <form action="/add" method="POST">
+                    <input
+                        type="text"
+                        name="nombre"
+                        placeholder="nombre"
+                        class="form-control mb-2"
+                        autofocus />
+                    <input
+                        type="email"
+                        name="direccion"
+                        placeholder="direccion"
+                        class="form-control mb-2" />
+                    <input
+                        type="text"
+                        name="telefono"
+                        placeholder="telefono"
+                        class="form-control mb-2" />
+                    <input
+                        type="text"
+                        name="tipo"
+                        placeholder="tipo de cliente inserte del 1 al 4"
+                        class="form-control mb-2" />
+                    <button type="submit" class="btn btn-info">save
+                        customer</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include("partials/_footer") %>
