@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>lista de Alumnos</h1>
+    <form action="/alumnos/crear" method="post">
+      <label for="">nombre: </label>
+      <input type="text" name="nombre" /><br /><br />
+
+      <label for="">apellido: </label>
+      <input type="text" name="apellido" /><br /><br />
+
+      <label for="">fecha_nacimiento: </label>
+      <input type="date" name="fecha" /><br /><br />
+
+      <label for="">email: </label>
+      <input type="email" name="email" /><br /><br />
+
+      <input type="submit" value="CREAR ALUMNO">
+    </form><br>
+
+    <h2>LISTA DE ALUMNOS</h2>
+    <ul>
+        <% for (let i = 0; i < alumnos.length; i++) {%>
+        <li>
+            <%= alumnos[i].nombre + " " + alumnos[i].apellido %>
+            <form action="/alumnos/borrar/<%= alumnos[i].id_alumno %>" method="POST" style="display:inline;">
+                <button type="submit">Borrar</button>
+            </form>
+        </li>
+        <% } %>
+      </ul>
+
+  </body>
+</html>
