@@ -2,26 +2,29 @@
 
 namespace App\Http\Middleware;
 
+use App\Providers\RouteServiceProvider;
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class TestYear
+class RedirectIfAuthenticated
 {
     /**
      * Handle an incoming request.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
+     * @param  string|null  ...$guards
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next, ...$guards)
     {
-        /* Si el año no es 2019 o es null, redirige a /peliculas. Si el año es 2019, llama
-        a $next($request) para pasar la solicitud al siguiente middleware o al controlador. */
-        $year = $request->route('year');
+        $guards = empty($guards) ? [null] : $guards;
 
-        if (is_null($year) || $year != 2019) {
-            return redirect('/peliculas');
+        foreach ($guards as $guard) {
+            if (Auth::guard($guard)->check()) {
+                return redirect(RouteServiceProvider::HOME);
+            }
         }
 
         return $next($request);

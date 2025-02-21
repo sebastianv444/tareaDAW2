@@ -30,8 +30,8 @@ Route::get('/mostrar-fecha', function () {
 
 /* Para pasar parametros se usan {} */
 /* Route::get('/series/{titulo}', function ($titulo = 'no hay serie seleccionada') { */
-    /* OJO: este nombre que le pongamos en el view es el que va buscar en la carpeta de views  */
-    /* return view('peliculas',[
+/* OJO: este nombre que le pongamos en el view es el que va buscar en la carpeta de views  */
+/* return view('peliculas',[
         'titulo' => $titulo
     ]);
 }); */
@@ -57,7 +57,7 @@ Route::get('/mostrar-fecha', function () {
         'producto' => $producto,
         'year' => $year
     ]); */
-    /* OJO: el where solo admite expresiones regulares. */
+/* OJO: el where solo admite expresiones regulares. */
 /* })->where([
     'producto' => '[a-zA-Z0-9]+'
 ]); */
@@ -104,41 +104,45 @@ Route::get('/mostrar-fecha', function () {
 // CON CONTROLADORES:
 /* Como segundo parametro le hemos pasado la ruta para el controldor, y el @index es para
 llamar al metodo de nuestro controlador. */
-Route::get('/peliculas','\App\Http\Controllers\PeliculaController@index');
+Route::get('/peliculas', '\App\Http\Controllers\PeliculaController@index');
 
 /*El resource para que nos permita acceder a todos los metodos de este controlador,
 para acceder a sus metodos en la url de la web tenemos que poner "/" y el nombre de el metodo.*/
-Route::resource('/usuario','\App\Http\Controllers\UsuarioController');
+Route::resource('/usuario', '\App\Http\Controllers\UsuarioController');
 
 /* el /{year?} es para indicar que es opcional */
-Route::get("/detalle/{year?}",[
+Route::get("/detalle/{year?}", [
     // los middlewere son un filtro:
     'middleware' => 'testYear',
-    'uses'=> '\App\Http\Controllers\PeliculaController@detalle',
-    /* le damos un nombre para luego referenciarla y usarla en otros sitios directamente */
+    /* Si el año no es 2019 o es null, redirige a /peliculas. Si el año es 2019, llama
+        a $next($request) en el middleware para pasar la solicitud al siguiente middleware
+        o al controlador. */
+    'uses' => '\App\Http\Controllers\PeliculaController@detalle',
+    /* con este as le damos un abreviado a "/detalle/{year}" para poder usarla en
+    el lugar en el que te redirija este controlador PeliculaController@detalle */
     'as' => "detalle.pelicula"
 ]);
 
-Route::get('/redirigir','\App\Http\Controllers\PeliculaController@redirigir');
+Route::get('/redirigir', '\App\Http\Controllers\PeliculaController@redirigir');
 
 
 // Formulario es método POST
 /* OJO le pusimos get, ya que no vamos a mostrar algo directamente, sino que vamos a tratar esto
 con un controller. */
-Route::get('/formulario','\App\Http\Controllers\PeliculaController@formulario');
+Route::get('/formulario', '\App\Http\Controllers\PeliculaController@formulario');
 
-Route::post('/recibir','\App\Http\Controllers\PeliculaController@recibir');
+Route::post('/recibir', '\App\Http\Controllers\PeliculaController@recibir');
 
 // con group utilizamos un prefijo de frutas (opcional, simplement por comodidad).
-Route::group(['prefix'=>'frutas'],function(){
-    Route::get('/','\App\Http\Controllers\FrutaController@index');
-    Route::get('index','\App\Http\Controllers\FrutaController@index');
-    Route::get('detalle/{id}','\App\Http\Controllers\FrutaController@detalle');
-    Route::get('crear','\App\Http\Controllers\FrutaController@crear');
-    Route::post('salvar','\App\Http\Controllers\FrutaController@salvar');
-    Route::get('borrar/{id}','\App\Http\Controllers\FrutaController@borrar');
-    Route::post('editar/{id}','\App\Http\Controllers\FrutaController@editar');
-    Route::post('actualizar','\App\Http\Controllers\FrutaController@actualizar');
+Route::group(['prefix' => 'frutas'], function () {
+    Route::get('/', '\App\Http\Controllers\FrutaController@index');
+    Route::get('index', '\App\Http\Controllers\FrutaController@index');
+    Route::get('detalle/{id}', '\App\Http\Controllers\FrutaController@detalle');
+    Route::get('crear', '\App\Http\Controllers\FrutaController@crear');
+    Route::post('salvar', '\App\Http\Controllers\FrutaController@salvar');
+    Route::get('borrar/{id}', '\App\Http\Controllers\FrutaController@borrar');
+    Route::post('editar/{id}', '\App\Http\Controllers\FrutaController@editar');
+    Route::post('actualizar', '\App\Http\Controllers\FrutaController@actualizar');
 });
 
-Route::resource('/ok',"\App\Http\Controllers\ProveedorController");
+Route::resource('/ok', "\App\Http\Controllers\ProveedorController");

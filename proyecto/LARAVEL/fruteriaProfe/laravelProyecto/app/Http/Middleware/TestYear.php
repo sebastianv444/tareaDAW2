@@ -18,6 +18,7 @@ class TestYear
     {
         /* Si el año no es 2019 o es null, redirige a /peliculas. Si el año es 2019, llama
         a $next($request) para pasar la solicitud al siguiente middleware o al controlador. */
+        
         $year = $request->route('year');
 
         if (is_null($year) || $year != 2019) {
