@@ -9,7 +9,7 @@
     <script>
         async function petcion() {
             try {
-                const petcion = await fetch('https://api.tcgdex.net/v2/en/cards/bw9-7');
+                const petcion = await fetch('https://api.tcgdex.net/v2/en/cards/bw9-7')
                 if (!petcion.ok) {
                     throw new Error(`ERROR! status: ${petcion.status}`);
                 }

@@ -14,9 +14,8 @@
             throw new Error(`ERROR! status: ${peticion.status}`);
           }
           const peticionJSON = await peticion.json();
-/*           const response = peticionJSON
-            .map((juego) => juego.desarrollador.nombre)
-            .sort((a, b) => a.localeCompare(b)); */
+          const response = peticionJSON.filter(juego => juego.año === 2020)
+          .map(juego => juego.nombre);
           console.log(response);
         } catch (error) {
           console.error("Error: " + error);
