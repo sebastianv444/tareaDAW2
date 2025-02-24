@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      async function peticion() {
+        try {
+          const peticion = await fetch("http://localhost:8000/videojuegos/");
+          if (!peticion.ok) {
+            throw new Error(`ERROR! status: ${peticion.status}`);
+          }
+          const peticionJSON = await peticion.json();
+/*           const response = peticionJSON
+            .map((juego) => juego.desarrollador.nombre)
+            .sort((a, b) => a.localeCompare(b)); */
+          console.log(response);
+        } catch (error) {
+          console.error("Error: " + error);
+        }
+      }
+      
+      peticion();
+    </script>
+  </body>
+</html>

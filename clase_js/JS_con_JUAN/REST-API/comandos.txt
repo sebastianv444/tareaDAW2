@@ -1,0 +1,22 @@
+Para instalar todo en maquina virtual:
+
+sudo apt install python-is-python3
+sudo apt install python3-pip
+
+pip install fastapi
+pip install uvicorn
+pip install python-multipart
+
+Lanzar FastApi sin Docker:
+
+python -m uvicorn main:app --reload
+
+////// En principio no usar
+
+Hacer build de Docker:
+
+docker build -t fastapi-videojuegos .
+
+Lanzar docker:
+
+docker run -p 8000:8000 --name videojuegos-api fastapi-videojuegos

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      async function peticion() {
+        try {
+          const respuesta = await fetch("http://localhost:8000/videojuegos/");
+          if (!respuesta.ok) {
+            throw new Error(`ERROR! status: ${respuesta.status}`);
+          }
+          const videojuegos = await respuesta.json();
+
+          const conteoDesarrolladores = {};
+
+          videojuegos.forEach((juego) => {
+            const nombreDesarrollador = juego.desarrollador.nombre;
+            conteoDesarrolladores[nombreDesarrollador] =
+              (conteoDesarrolladores[nombreDesarrollador] || 0) + 1;
+          });
+
+          const desarrolladoresFiltrados = Object.keys(conteoDesarrolladores)
+            .filter((nombre) => conteoDesarrolladores[nombre] >= 2)
+            .sort((a, b) => a.localeCompare(b));
+
+          console.log(desarrolladoresFiltrados);
+        } catch (error) {
+          console.error("Error:", error);
+        }
+      }
+      peticion();
+    </script>
+  </body>
+</html>
