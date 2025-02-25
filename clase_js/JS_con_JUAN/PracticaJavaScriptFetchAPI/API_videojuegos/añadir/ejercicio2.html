@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button type="button">CREAR Elder Ring</button>
+    <script>
+      async function peticion() {
+        try {
+          const juego = {
+            nombre: "Elden Ring",
+            id_desarrollador: 9,
+            año: 2022,
+            genero: "RPG",
+          };
+
+          const data = await fetch("http://localhost:8000/videojuegos/", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(juego),
+          });
+          const dataJSON = await data.json();
+          console.log(dataJSON);
+        } catch (error) {
+          console.error("ERROR: " + error);
+        }
+      }
+
+      document.querySelector("button").addEventListener("click", peticion);
+    </script>
+  </body>
+</html>

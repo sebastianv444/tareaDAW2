@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button type="button"></button>
+
+    <script>
+      async function petcion(params) {
+        try {
+          const juego = {
+            nombre: "Blasphemous",
+            id_desarrollador: 61,
+            año: 2019,
+            genero: "Metroidvania",
+          };
+
+          const data = await fetch("http://localhost:8000/videojuegos/", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(juego)
+          });
+
+          if (!data.ok) {
+            throw new Error(`ERROR! status: ${petcion.status}`);
+          }
+
+          const dataJSON = await data.json();
+          console.log(dataJSON);
+        } catch (error) {
+          console.error("Error: " + error);
+        }
+      }
+      document.querySelector("button").addEventListener("click", petcion);
+    </script>
+  </body>
+</html>

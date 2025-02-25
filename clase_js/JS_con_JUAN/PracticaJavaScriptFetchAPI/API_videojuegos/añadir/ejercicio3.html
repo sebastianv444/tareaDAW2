@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button type="button">Crear Desarrollador</button>
+    <script>
+      async function peticion() {
+        try {
+          const desarrollador = {
+            nombre: "The Game Kitchen",
+            pais: "España",
+          };
+
+          const data = await fetch("http://localhost:8000/desarrolladores/", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(desarrollador),
+          });
+
+          if (!data.ok) {
+            throw new Error(`ERROR! status: ${petcion.status}`);
+          }
+
+          const dataJSON = await data.json();
+          console.log(dataJSON);
+        } catch (error) {
+          console.error("ERROR: " + error);
+        }
+      }
+
+      document.querySelector("button").addEventListener("click", peticion);
+    </script>
+  </body>
+</html>
