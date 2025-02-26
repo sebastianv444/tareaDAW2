@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button type="button">ELIMINAR CON ID 2</button>
+
+    <script>
+        async function eliminar() {
+            const res = await fetch("http://localhost:8000/videojuegos/2",{
+                method: "DELETE"
+            });
+
+            console.log(`STATUS: ${res.status}`);
+            
+        }
+
+        document.querySelector("button").addEventListener("click",eliminar);
+    </script>
+</body>
+</html>

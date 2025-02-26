@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>CREAR JUEGO</h1>
+
+    <form action="">
+      <label for="nombre">Nombre: </label>
+      <input type="text" name="nombre" id="" /><br /><br />
+
+      <label for="año">Año: </label>
+      <input type="number" name="año" id="" /><br /><br />
+
+      <label for="genero">Genero: </label>
+      <input type="text" name="genero" id="" /><br /><br />
+
+      <select name="id_desarrollador" id=""></select
+      ><br /><br />
+
+      <button type="submit">CREAR JUEGO</button>
+    </form>
+
+    <script>
+      async function mostrarDesarrolladores() {
+        try {
+          const res = await fetch("http://localhost:8000/desarrolladores/");
+          if (!res.ok) {
+            throw new Error(`ERROR! status: ${data.status}`);
+          }
+          const data = await res.json();
+          data.forEach((des) => {
+            document.querySelector("select").innerHTML += `
+                        <option value="${des.id}">${des.nombre}</option>
+                    `;
+          });
+        } catch (error) {
+          console.log("ERROR: " + error);
+        }
+      }
+
+      mostrarDesarrolladores();
+
+      async function crear(event) {
+        event.preventDefault();
+        const formData = new FormData(this);
+        const jsonData = Object.fromEntries(formData.entries());
+
+        if (
+          jsonData.nombre === "" ||
+          jsonData.año === "" ||
+          jsonData.genero === ""
+        ) {
+          return alert("No dejes campos vacios");
+        }
+
+        console.log(jsonData);
+        try {
+          const data = await fetch("http://localhost:8000/videojuegos/", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(jsonData),
+          }).then((res) => res.json());
+          console.log(data);
+        } catch (error) {
+          console.log(`ERROR!!: ${error}`);
+        }
+      }
+
+      document.querySelector("form").addEventListener("submit", crear);
+    </script>
+  </body>
+</html>

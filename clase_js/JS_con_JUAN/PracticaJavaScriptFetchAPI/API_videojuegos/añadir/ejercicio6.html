@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="nombre">Nombre: </label>
+        <input type="text" name="nombre" id="nombre"><br><br>
+
+        <label for="pais">Pais: </label>
+        <input type="text" name="pais" id="pais"><br><br>
+
+        <button type="submit">CREAR DESARROLLADOR</button>
+    </form>
+
+    <p></p>
+
+    <script>
+        async function peticion(event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+            const jsonData = Object.fromEntries(formData.entries());
+            
+            if(jsonData.nombre === "" || jsonData.pais === ""){
+                return alert("Recuerda no dejar en blanco los campos");
+            }
+
+            try {
+                const data = await fetch("http://localhost:8000/desarrolladores/",{
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(jsonData)
+                });
+                
+                if(!data.ok){
+                    throw new Error(`ERROR! status: ${data.status}`)
+                }
+
+                const dataJSON = await data.json();
+
+                document.querySelector("p").textContent = JSON.stringify(dataJSON);
+                console.log(dataJSON);
+            } catch (error) {
+                console.error("Error: " + error);
+            }
+        }
+
+        document.querySelector("form").addEventListener("submit",peticion);
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul></ul>
+
+    <script>
+      async function peticion() {
+        try {
+          const petcion = await fetch("https://api.tcgdex.net/v2/en/cards/");
+          if (!petcion.ok) {
+            throw new Error(`ERROR! status: ${petcion.status}`);
+          }
+          const petcionJSON = await petcion.json();
+          let mostrar = [];
+
+          while (mostrar.length < 5) {
+            const random = Math.trunc(Math.random() * petcionJSON.length);
+            const card = await fetch(
+              `https://api.tcgdex.net/v2/en/cards/${petcionJSON[random].id}`
+            ).then((res) => res.json());
+
+            if (card.types && card.types.includes("Water")) {
+              mostrar.push(card.image);
+            }
+          }
+          return mostrar;
+        } catch (error) {
+          console.error("Error: " + error);
+        }
+      }
+
+      async function main() {
+        const imagenes = await peticion();
+        const ul = document.querySelector("ul");
+        console.log(imagenes);
+
+        imagenes.forEach((image) => {
+          const li = document.createElement("li");
+          const img = document.createElement("img");
+          img.src = image + "/high.webp";
+          li.appendChild(img);
+          ul.appendChild(li);
+        });
+      }
+      main();
+    </script>
+  </body>
+</html>

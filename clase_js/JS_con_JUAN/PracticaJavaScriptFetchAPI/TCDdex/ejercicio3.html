@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <ul>
+    </ul>
+    
+    <script>
+        async function petcion() {
+            try {
+                const petcion = await fetch('https://api.tcgdex.net/v2/en/cards/');
+                if (!petcion.ok) {
+                    throw new Error(`ERROR! status: ${petcion.status}`);
+                }
+                const petcionJSON = await petcion.json();
+                const squirtles = petcionJSON.filter(card => card.name === "Squirtle");
+                return squirtles;
+            } catch (error) {
+                console.error('Error: ' + error);
+            }
+        }
+
+        async function main(){
+            const squirtles = await petcion();
+            const ul = document.querySelector("ul");
+            console.log(squirtles);
+            
+            squirtles.forEach(squirtle => {
+                const li = document.createElement("li");
+                const img = document.createElement("img");
+                img.src = squirtle.image + '/high.webp';
+                li.appendChild(img);
+                ul.appendChild(li);
+            });
+        }
+        main();
+    </script>
+</body>
+</html>

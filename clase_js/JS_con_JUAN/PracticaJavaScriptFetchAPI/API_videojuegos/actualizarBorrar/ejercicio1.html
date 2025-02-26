@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button type="button">ACTUALIZAR GOD OF WAR</button>
+
+    <script>
+        async function actualizar() {
+            try {
+                const juego = await fetch("http://localhost:8000/videojuegos/10")
+                    .then(res => res.json());
+                
+                const datos = {
+                    nombre: "God of War Ragnarok",
+                    id_desarrollador: juego.desarrollador.id,
+                    año: 2022,
+                    genero: juego.genero
+                }
+
+                const req = await fetch(`http://localhost:8000/videojuegos/${juego.id}`,{
+                    method: "PUT",
+                    headers:{
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(datos)
+                });
+
+                console.log(`STATUS: ${req.status}`);
+            } catch (error) {
+                console.log(`ERROR!!: ${error}`);
+            }
+        }
+
+        document.querySelector("button").addEventListener("click",actualizar)
+    </script>
+  </body>
+</html>

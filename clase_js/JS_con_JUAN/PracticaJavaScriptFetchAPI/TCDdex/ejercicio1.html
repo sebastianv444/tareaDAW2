@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        async function petcion() {
+            try {
+                const petcion = await fetch('https://api.tcgdex.net/v2/en/cards/bw9-7')
+                if (!petcion.ok) {
+                    throw new Error(`ERROR! status: ${petcion.status}`);
+                }
+                const petcionJSON = await petcion.json();
+                console.log(petcionJSON);
+            } catch (error) {
+                console.error('Error: ' + error);
+            }
+        }
+        
+        petcion();
+    </script>
+</body>
+</html>
