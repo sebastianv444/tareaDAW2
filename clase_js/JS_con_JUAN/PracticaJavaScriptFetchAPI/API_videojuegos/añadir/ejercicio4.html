@@ -10,9 +10,13 @@
     <script>
       async function petcion(params) {
         try {
+          const desarrolladores = await fetch('http://localhost:8000/desarrolladores/')
+            .then(res => res.json());
+          const desarrollador = desarrolladores.find(des => des.nombre === "The Game Kitchen");
+          
           const juego = {
             nombre: "Blasphemous",
-            id_desarrollador: 61,
+            id_desarrollador: desarrollador.id,
             año: 2019,
             genero: "Metroidvania",
           };
