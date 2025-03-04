@@ -1,0 +1,33 @@
+/* 
+    Estas importaciones nos permiten realizar la creacion de varibles 
+    especiales como colores para usarlas con bootstrap
+*/
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+
+$theme-colors: map-merge($theme-colors,(
+    "verdeBase": #26A66A,
+    "fondoGray": #262626
+));
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Righteous&display=swap");
+
+// Clases personalizadas para fuentes
+.ff-principal {
+  font-family: "Inter", serif;
+}
+
+.ff-secundario {
+  font-family: "Righteous", serif;
+}
+
+.ff-monospace {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+/* 
+    Este " @import " importa todo el CSS de Bootstrap para permitir la personalización
+    de estilos directamente en este archivo.
+*/
+@import "../node_modules/bootstrap/scss/bootstrap";

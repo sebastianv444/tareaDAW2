@@ -1,0 +1,236 @@
+  @font-face {
+  font-family: "GOOD_OF_WAR";
+  src: url(../../Fuentes_de_texto/GODOFWAR.TTF) format("truetype");
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+}
+
+/*BARRA DE NAVEGACION*/
+.nav {
+  position: fixed;
+  width: 100%;
+  height: 118px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "GOOD_OF_WAR";
+}
+
+.nav__logo {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+/*LISTA DESPLEGABLE DEL NAV*/
+
+.desplegable__games {
+  position: absolute; /*se le pone el absolute al ul qu se va edsplegar con los li*/
+  transform: translateY(300px);
+  list-style: none;
+  visibility: hidden; /*esto es para poder esconder la lista para luego mostrarla al pasar el mouse
+    psdt: no le puse el display:none ni el display block por que no me dejaba hacer tracisiones*/
+  left: 15px;
+}
+
+.nav .desplegable .desplegable__games .img {
+  height: 95px;
+  width: auto;
+  margin: 10px 29px;
+}
+
+.nav .desplegable .desplegable__games .img--especial {
+  height: 120px;
+  margin: 19px 0px 8px 19px;
+}
+
+.nav__logo:hover > .desplegable__games {
+  visibility: visible; /*Esto es para poder ver la lista escodida con hiden al pasar el mouse en el nav__logo*/
+  opacity: 1;
+  pointer-events: all;
+  animation: fade-in-blur 0.5s forwards;
+}
+
+.nav__logo:hover .desplegable__games .img:nth-child(1) {
+  animation: fade-in-blur-child 0.5s 0.1s forwards;
+}
+
+.nav__logo:hover .desplegable__games .img:nth-child(2) {
+  animation: fade-in-blur-child 0.5s 0.2s forwards;
+}
+
+.nav__logo:hover .desplegable__games .img:nth-child(3) {
+  animation: fade-in-blur-child 0.5s 0.3s forwards;
+}
+
+.nav__logo:hover .desplegable__games .img:nth-child(4) {
+  animation: fade-in-blur-child 0.5s 0.4s forwards;
+}
+
+@keyframes fade-in-blur {
+  0% {
+    opacity: 0;
+    filter: blur(5px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0px);
+  }
+}
+
+@keyframes fade-in-blur-child {
+  0% {
+    filter: blur(5px);
+  }
+  100% {
+    filter: blur(0px);
+  }
+}
+
+/*LISTA DESPLEGABLE DEL NAV*/
+
+.nav__logo .logo {
+  height: 89px;
+  width: auto;
+  margin: 0px 35px;
+  cursor: pointer;
+}
+
+.nav__links {
+  display: flex;
+  list-style: none;
+  font-size: 23px;
+  gap: 17px;
+  height: 100%;
+  margin-right: 138px;
+}
+
+.nav__link {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 15px 19px 15px;
+  height: 100%;
+}
+
+.nav__link--noSeleccionado {
+  justify-content: flex-end;
+}
+
+.nav__link--noSeleccionado:hover {
+  background-color: #1b71e3;
+  animation: parpadeo 7s infinite;
+  transition: justify-content 0.5s, background-color 0.3s, box-shadow 5.5s 0.3s;
+}
+
+.nav__link--seleccionado {
+  background-color: #1b71e3;
+  padding: 34px 15px 19px 15px;
+  animation: parpadeo 7s infinite;
+}
+
+@keyframes parpadeo {
+  0% {
+    box-shadow: inset 0 0 10px rgba(27, 113, 227, 0.8),
+      0 0 15px rgba(27, 113, 227, 0.8), 0 0 30px rgba(27, 113, 227, 0.8),
+      0 0 50px rgba(27, 113, 227, 0.8);
+    text-shadow: 0 0 10px black;
+  }
+  90% {
+    box-shadow: inset 0 0 10px rgba(27, 113, 227, 0),
+      0 0 15px rgba(27, 113, 227, 0), 0 0 30px rgba(27, 113, 227, 0),
+      0 0 50px rgba(27, 113, 227, 0);
+    text-shadow: 0 0 10px black;
+  }
+  99% {
+    color: transparent;
+  }
+  100% {
+    box-shadow: inset 0 0 10px rgba(27, 113, 227, 0.8),
+      0 0 15px rgba(27, 113, 227, 0.8), 0 0 30px rgba(27, 113, 227, 0.8),
+      0 0 50px rgba(27, 113, 227, 0.8);
+    text-shadow: 0 0 10px black;
+  }
+}
+
+.nav__links a {
+  text-decoration: none;
+  color: white;
+  text-align: end;
+}
+
+/*BARRA DE NAVEGACION*/
+
+/*SECCION PRINCIPAL BLOQUE 1*/
+.seccion-principal {
+  height: 100vh;
+  width: 100%;
+  background: url("../../Imagenes/opcion1-layoutEdit.jpg") no-repeat center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+}
+
+aside {
+  margin-left: 100px;
+  display: flex;
+  flex-flow: row wrap;
+  font-family: "Inter", sans-serif;
+}
+
+.menuLateral__radio {
+  border: 1px solid #1b71e3;
+  border-radius: 50%;
+  padding: 5px;
+}
+
+.menuLateral__bolita {
+  width: 13px;
+  height: 13px;
+  background-color: #1b71e3;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.menuLateral__bolita--noSeleccionado {
+  padding: 5px;
+  margin-top: 10px;
+  margin: 23px auto 26px auto;
+  background-color: #c3c3c3;
+}
+
+.centrandoElTexto {
+  display: flex;
+  align-items: center;
+}
+
+.textoBolitas {
+  height: fit-content; /*esto es para que el alto se adapte a lo que le vallamos ingresando, por que si no le pongo esto el border se pinta hasta el final de la caja*/
+  margin-left: 45px;
+  border-left: 2px solid #1b71e3;
+  padding: 0px 0px 0px 20px;
+  color: white;
+  font-size: 20px;
+}
+/*SECCION PRINCIPAL BLOQUE 1*/
+
+/*SECCION SECUNDARIA BLOQUE 2*/
+
+.seccion-secundaria-2 {
+  height: 100vh;
+  width: 100%;
+  background-color: black;
+}
+
+/*SECCION SECUNDARIA BLOQUE 2*/

@@ -1,0 +1,14 @@
+1) Le añadí al máximo de animaciones, tanto a esta página principal como a la página de 
+God of War.
+
+2) La página principal del portafolio tiene media queries tanto para móvil como para la 
+resolución de los portátiles de clase. Interactúe con el máximo de elementos en la página 
+principal del portafolio, ya que le añadí varias animaciones al menú y al logo.
+
+3) La página de God of War tiene muchas animaciones de sonido al hacer clic en el menú y en 
+el submenú. Este submenú aparece al pasar el mouse por el logo y, al hacer clic en cualquiera 
+de esos logos, tanto del menú como del submenú, también hay un efecto de sonido. Pruebe 
+haciendo clic en todo e interactuando con la página.
+
+Esta página web esta desplegada ya en un hosting:
+URL: https://tareadiw.web.app
